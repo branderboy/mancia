@@ -87,10 +87,10 @@
             }
         }
         .glass-panel {
-            background: rgba(10, 25, 47, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .glass-panel-light {
             background: rgba(255, 255, 255, 0.85);
@@ -278,11 +278,14 @@
             </video>
         </div>
         
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-mancia-navy/50 via-mancia-navy/30 to-mancia-red/10 z-[1]"></div>
+
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
 
                 <!-- Hero Text -->
-                <div class="lg:col-span-7 text-left relative bg-mancia-navy/60 backdrop-blur-sm p-6 sm:p-8 md:p-10 -m-6 sm:-m-8 md:-m-10 rounded-2xl">
+                <div class="lg:col-span-7 text-left">
                     <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-heading font-bold tracking-widest uppercase text-xs px-4 py-2 mb-6 shadow-lg">
                         <span class="w-2 h-2 rounded-full bg-mancia-red animate-pulse"></span>
                         <span>Roofing & Siding Services</span>

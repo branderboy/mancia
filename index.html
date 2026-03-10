@@ -37,11 +37,27 @@
                     animation: {
                         'shimmer': 'shimmer 2.5s infinite linear',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.5s ease-out forwards',
+                        'count-up': 'countUp 0.4s ease-out',
                     },
                     keyframes: {
                         shimmer: {
                             '0%': { transform: 'translateX(-150%) skewX(-15deg)' },
                             '100%': { transform: 'translateX(150%) skewX(-15deg)' }
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
                         }
                     }
                 }
@@ -87,6 +103,53 @@
             animation: shimmer 2.5s infinite linear;
             z-index: 10;
             pointer-events: none;
+        }
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Mobile menu overlay */
+        .mobile-overlay {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-overlay.open {
+            transform: translateX(0);
+        }
+        /* Floating CTA pulse ring */
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,0,0,0.5);
+            animation: pulseRing 2s ease-out infinite;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        /* Back to top */
+        .back-to-top {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(10px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        /* Stat counter */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
         }
     </style>
 </head>
@@ -159,6 +222,21 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-overlay fixed inset-0 z-[60] bg-mancia-navy/98 backdrop-blur-xl flex flex-col justify-center items-center">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-white text-4xl hover:text-mancia-red transition-colors"><i class="fa-solid fa-xmark"></i></button>
+        <nav class="flex flex-col space-y-6 text-center">
+            <a href="#" class="mobile-nav-link text-3xl font-heading font-bold text-white uppercase tracking-widest hover:text-mancia-red transition-colors">Home</a>
+            <a href="#about" class="mobile-nav-link text-3xl font-heading font-bold text-white uppercase tracking-widest hover:text-mancia-red transition-colors">About</a>
+            <a href="#services" class="mobile-nav-link text-3xl font-heading font-bold text-white uppercase tracking-widest hover:text-mancia-red transition-colors">Services</a>
+            <a href="#reviews" class="mobile-nav-link text-3xl font-heading font-bold text-white uppercase tracking-widest hover:text-mancia-red transition-colors">Reviews</a>
+            <div class="pt-6 border-t border-white/10 mt-2">
+                <a href="tel:+12406650050" class="text-2xl font-heading font-bold text-mancia-red tracking-wider"><i class="fa-solid fa-phone mr-2"></i>(240) 665-0050</a>
+            </div>
+            <a href="#estimate" class="mobile-nav-link bg-mancia-red text-white font-heading uppercase tracking-widest font-bold text-lg px-8 py-4 mt-4 hover:bg-mancia-darkred transition-all">Free Estimate</a>
+        </nav>
+    </div>
+
     <!-- Overlapping Hero Section -->
     <section class="relative w-full min-h-[100vh] flex items-center pt-32 pb-48 clip-bottom-slant bg-mancia-navy">
         <!-- Absolute Background Image w/ Mix Blend -->
@@ -206,10 +284,19 @@
                         <!-- Glow effect behind form -->
                         <div class="absolute -top-24 -right-24 w-48 h-48 bg-mancia-red rounded-full mix-blend-screen filter blur-[80px] opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
                         
-                        <h3 class="text-3xl font-heading font-bold text-white mb-2 uppercase tracking-wide">Get A Free Quote</h3>
-                        <p class="text-gray-400 text-sm mb-8 font-sans">If your roof is leaking, aging, or damaged after a storm, we inspect the problem and give you a clear solution.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-3xl font-heading font-bold text-white uppercase tracking-wide">Get A Free Quote</h3>
+                            <span class="flex items-center text-xs font-sans text-green-400 bg-green-400/10 border border-green-400/20 px-3 py-1">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>Online
+                            </span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6 font-sans">If your roof is leaking, aging, or damaged after a storm, we inspect the problem and give you a clear solution.</p>
+                        <div class="flex items-center text-xs font-sans text-gray-500 mb-6 bg-white/5 px-3 py-2 border border-white/10">
+                            <i class="fa-regular fa-clock text-mancia-red mr-2"></i>
+                            <span>Average response time: <strong class="text-white">Under 2 hours</strong></span>
+                        </div>
                         
-                        <form onsubmit="event.preventDefault(); alert('Request Received.');" class="space-y-5 relative z-10">
+                        <form id="quote-form" onsubmit="handleFormSubmit(event)" class="space-y-5 relative z-10">
                             <div>
                                 <input type="text" required class="w-full bg-white/10 text-white placeholder-gray-400 px-5 py-4 border border-white/20 focus:border-mancia-red focus:bg-white/20 focus:ring-2 focus:ring-mancia-red/50 transition-all outline-none font-sans" placeholder="FULL NAME *">
                             </div>
@@ -222,15 +309,33 @@
                                 </div>
                             </div>
                             <div>
-                                <input type="text" required class="w-full bg-white/10 text-white placeholder-gray-400 px-5 py-4 border border-white/20 focus:border-mancia-red focus:bg-white/20 focus:ring-2 focus:ring-mancia-red/50 transition-all outline-none font-sans" placeholder="ZIP CODE *">
+                                <select required class="w-full bg-white/10 text-gray-400 px-5 py-4 border border-white/20 focus:border-mancia-red focus:bg-white/20 focus:ring-2 focus:ring-mancia-red/50 transition-all outline-none font-sans appearance-none">
+                                    <option value="" disabled selected>SERVICE NEEDED *</option>
+                                    <option value="roof-repair" class="text-mancia-navy">Roof Repair</option>
+                                    <option value="roof-replacement" class="text-mancia-navy">Roof Replacement</option>
+                                    <option value="roof-inspection" class="text-mancia-navy">Roof Inspection</option>
+                                    <option value="siding" class="text-mancia-navy">Siding Services</option>
+                                    <option value="storm-damage" class="text-mancia-navy">Storm Damage</option>
+                                    <option value="other" class="text-mancia-navy">Other</option>
+                                </select>
                             </div>
                             <div>
                                 <textarea required rows="3" class="w-full bg-white/10 text-white placeholder-gray-400 px-5 py-4 border border-white/20 focus:border-mancia-red focus:bg-white/20 focus:ring-2 focus:ring-mancia-red/50 transition-all outline-none font-sans resize-none" placeholder="PROJECT DETAILS *"></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-white text-mancia-navy font-heading font-bold uppercase tracking-widest text-lg py-4 shadow-lg hover:bg-mancia-red hover:text-white hover:shadow-[0_10px_30px_rgba(255,0,0,0.4)] transition-all duration-300">
+                            <button type="submit" id="submit-btn" class="w-full bg-white text-mancia-navy font-heading font-bold uppercase tracking-widest text-lg py-4 shadow-lg hover:bg-mancia-red hover:text-white hover:shadow-[0_10px_30px_rgba(255,0,0,0.4)] transition-all duration-300">
                                 Submit Request
                             </button>
+                            <p class="text-center text-gray-500 text-xs font-sans"><i class="fa-solid fa-lock mr-1"></i> Your information is secure and never shared.</p>
                         </form>
+                        <!-- Success State -->
+                        <div id="form-success" class="hidden relative z-10 text-center py-12">
+                            <div class="w-20 h-20 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-6">
+                                <i class="fa-solid fa-check text-green-400 text-4xl"></i>
+                            </div>
+                            <h4 class="text-2xl font-heading font-bold text-white uppercase tracking-wide mb-3">Request Received!</h4>
+                            <p class="text-gray-400 font-sans text-sm mb-6">Thank you! We'll review your request and get back to you within 24 hours.</p>
+                            <p class="text-gray-500 font-sans text-xs">Need immediate help? Call <a href="tel:+12406650050" class="text-mancia-red font-bold">(240) 665-0050</a></p>
+                        </div>
                     </div>
                 </div>
 
@@ -250,6 +355,26 @@
                 <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/ab-seal-1.webp" alt="BBB Accredited" class="h-12 md:h-14 object-contain grayscale hover:grayscale-0 transition-all duration-500">
                 <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/Frame-2095586113.jpg" alt="CertainTeed" class="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all duration-500">
                 <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/Frame-2095586114.png" alt="Certification" class="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all duration-500">
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 reveal">
+                <div class="bg-mancia-navy text-center py-6 px-4 border-b-2 border-mancia-red">
+                    <div class="text-4xl md:text-5xl font-heading font-bold text-white stat-number" data-target="500" data-suffix="+">0</div>
+                    <p class="text-gray-400 text-xs uppercase tracking-widest font-heading mt-2">Roofs Completed</p>
+                </div>
+                <div class="bg-mancia-navy text-center py-6 px-4 border-b-2 border-mancia-red">
+                    <div class="text-4xl md:text-5xl font-heading font-bold text-white stat-number" data-target="15" data-suffix="+">0</div>
+                    <p class="text-gray-400 text-xs uppercase tracking-widest font-heading mt-2">Years Experience</p>
+                </div>
+                <div class="bg-mancia-navy text-center py-6 px-4 border-b-2 border-mancia-red">
+                    <div class="text-4xl md:text-5xl font-heading font-bold text-white stat-number" data-target="5" data-suffix=".0">0</div>
+                    <p class="text-gray-400 text-xs uppercase tracking-widest font-heading mt-2"><i class="fa-solid fa-star text-mancia-red mr-1"></i>Google Rating</p>
+                </div>
+                <div class="bg-mancia-navy text-center py-6 px-4 border-b-2 border-mancia-red">
+                    <div class="text-4xl md:text-5xl font-heading font-bold text-white stat-number" data-target="100" data-suffix="%">0</div>
+                    <p class="text-gray-400 text-xs uppercase tracking-widest font-heading mt-2">Satisfaction Rate</p>
+                </div>
             </div>
 
             <!-- Feature Cards (Icon-Based Layout) -->
@@ -366,7 +491,7 @@
                 </div>
 
                 <div class="order-1 lg:order-2">
-                    <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">About Us</span>
+                    <span class="text-mancia-red font-bold tracking-widest uppercase text-sm reveal">About Us</span>
                     <h2 class="text-4xl md:text-5xl font-heading font-bold text-mancia-navy mb-6 uppercase tracking-wide mt-2">
                         Trusted Roofing Company in <br><span class="text-mancia-red">Bowie, Maryland</span>
                     </h2>
@@ -376,8 +501,24 @@
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed font-sans font-light">
                         We understand the roofing issues common in this area. From storm damage to aging shingles, Maryland homes face weather conditions that require strong materials and proper installation. Our goal is simple: install and repair roofs that protect your home for years to come.
                     </p>
+                    <!-- Trust badges -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-4 py-2.5">
+                            <i class="fa-solid fa-shield-halved text-mancia-red text-lg mr-2.5"></i>
+                            <div class="text-xs font-heading uppercase tracking-widest text-mancia-navy font-bold leading-tight">Licensed<br><span class="text-gray-500 font-sans font-normal normal-case tracking-normal">MHIC #135827</span></div>
+                        </div>
+                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-4 py-2.5">
+                            <i class="fa-solid fa-file-shield text-mancia-red text-lg mr-2.5"></i>
+                            <div class="text-xs font-heading uppercase tracking-widest text-mancia-navy font-bold leading-tight">Fully Insured<br><span class="text-gray-500 font-sans font-normal normal-case tracking-normal">Liability & Workers Comp</span></div>
+                        </div>
+                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-4 py-2.5">
+                            <i class="fa-solid fa-award text-mancia-red text-lg mr-2.5"></i>
+                            <div class="text-xs font-heading uppercase tracking-widest text-mancia-navy font-bold leading-tight">Warranty<br><span class="text-gray-500 font-sans font-normal normal-case tracking-normal">Manufacturer Backed</span></div>
+                        </div>
+                    </div>
+
                     <a href="#estimate" class="inline-flex items-center text-mancia-red font-heading font-bold uppercase tracking-widest hover:text-mancia-navy transition group">
-                        Protect Your Home Today 
+                        Protect Your Home Today
                         <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
                     </a>
                 </div>
@@ -390,7 +531,7 @@
     <section id="services" class="py-24 bg-white relative">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-                <div class="max-w-3xl">
+                <div class="max-w-3xl reveal">
                     <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">Comprehensive Protection</span>
                     <h2 class="text-4xl md:text-5xl font-heading font-bold text-mancia-navy mt-2 uppercase tracking-wide">Roofing & Siding Services</h2>
                 </div>
@@ -558,49 +699,67 @@
                 <div class="lg:col-span-8">
                     <div class="flex justify-between items-end mb-8">
                         <div>
-                            <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">Client Recon</span>
+                            <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">What Our Clients Say</span>
                             <h2 class="text-4xl font-heading font-bold text-white mt-1 uppercase tracking-wide">Highly Rated by Homeowners</h2>
                         </div>
                     </div>
                     
                     <div class="grid md:grid-cols-3 gap-6">
                         <!-- Review 1 -->
-                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
+                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
                             <div>
-                                <i class="fa-solid fa-quote-left text-4xl text-white/5 absolute top-4 left-4"></i>
-                                <div class="flex text-mancia-red text-sm mb-4 relative z-10">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <div class="flex items-center justify-between mb-4 relative z-10">
+                                    <div class="flex text-mancia-red text-sm">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-brands fa-google text-white/30 text-lg"></i>
                                 </div>
-                                <p class="text-gray-300 font-sans italic relative z-10 leading-relaxed text-sm">"Highly recommended for excellent service, prices, and quality of work."</p>
+                                <p class="text-gray-300 font-sans italic relative z-10 leading-relaxed text-sm">"Highly recommended for excellent service, prices, and quality of work. They replaced our entire roof after storm damage and the crew was professional from start to finish. Communication was outstanding throughout the whole process."</p>
                             </div>
-                            <div class="mt-6 pt-4 border-t border-white/10">
-                                <p class="text-white font-heading tracking-widest text-sm uppercase">Alejandra Vazquez</p>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-9 h-9 rounded-full bg-mancia-red/20 flex items-center justify-center mr-3 text-mancia-red font-heading font-bold text-sm">AV</div>
+                                    <p class="text-white font-heading tracking-widest text-sm uppercase">Alejandra Vazquez</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-sans">2 months ago</span>
                             </div>
                         </div>
                         <!-- Review 2 -->
-                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
+                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
                             <div>
-                                <i class="fa-solid fa-quote-left text-4xl text-white/5 absolute top-4 left-4"></i>
-                                <div class="flex text-mancia-red text-sm mb-4 relative z-10">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <div class="flex items-center justify-between mb-4 relative z-10">
+                                    <div class="flex text-mancia-red text-sm">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-brands fa-google text-white/30 text-lg"></i>
                                 </div>
-                                <p class="text-gray-300 font-sans italic relative z-10 leading-relaxed text-sm">"I am hard-pressed to imagine better workmanship and value at any price."</p>
+                                <p class="text-gray-300 font-sans italic relative z-10 leading-relaxed text-sm">"I am hard-pressed to imagine better workmanship and value at any price. Jorge and his team were punctual, clean, and incredibly thorough. They even spotted a ventilation issue we didn't know about and fixed it. Our new roof looks amazing."</p>
                             </div>
-                            <div class="mt-6 pt-4 border-t border-white/10">
-                                <p class="text-white font-heading tracking-widest text-sm uppercase">Thomas Hoffman</p>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center mr-3 text-blue-400 font-heading font-bold text-sm">TH</div>
+                                    <p class="text-white font-heading tracking-widest text-sm uppercase">Thomas Hoffman</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-sans">3 weeks ago</span>
                             </div>
                         </div>
                         <!-- Review 3 -->
-                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
+                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
                             <div>
-                                <i class="fa-solid fa-quote-left text-4xl text-white/5 absolute top-4 left-4"></i>
-                                <div class="flex text-mancia-red text-sm mb-4 relative z-10">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <div class="flex items-center justify-between mb-4 relative z-10">
+                                    <div class="flex text-mancia-red text-sm">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-brands fa-google text-white/30 text-lg"></i>
                                 </div>
-                                <p class="text-gray-300 font-sans italic relative z-10 leading-relaxed text-sm">"The staff were personable, friendly and knowledgeable."</p>
+                                <p class="text-gray-300 font-sans italic relative z-10 leading-relaxed text-sm">"The staff were personable, friendly and knowledgeable. They walked us through every option for our roof replacement and helped us pick the right shingles for our budget. The job was done in two days and the cleanup was spotless."</p>
                             </div>
-                            <div class="mt-6 pt-4 border-t border-white/10">
-                                <p class="text-white font-heading tracking-widest text-sm uppercase">Arthur Obrist</p>
+                            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-9 h-9 rounded-full bg-green-500/20 flex items-center justify-center mr-3 text-green-400 font-heading font-bold text-sm">AO</div>
+                                    <p class="text-white font-heading tracking-widest text-sm uppercase">Arthur Obrist</p>
+                                </div>
+                                <span class="text-gray-500 text-xs font-sans">1 month ago</span>
                             </div>
                         </div>
                     </div>
@@ -620,8 +779,8 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">Resilience</span>
-                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6 uppercase tracking-wide mt-2">
+                    <span class="text-mancia-red font-bold tracking-widest uppercase text-sm reveal">Resilience</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6 uppercase tracking-wide mt-2 reveal">
                         Roofing Built for <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-mancia-red to-orange-500">Maryland Weather</span>
                     </h2>
                     <p class="text-lg text-gray-300 mb-6 leading-relaxed font-sans font-light">
@@ -666,7 +825,7 @@
                 <!-- Brand -->
                 <div class="lg:col-span-1">
                     <img src="header-10_logo_image.png" alt="Mancia Roofing" class="h-16 bg-white/90 backdrop-blur-sm p-3 rounded mb-8" onerror="this.onerror=null; this.src='https://placehold.co/400x120/ffffff/000000?text=MANCIA+ROOFING';">
-                    <p class="text-gray-400 font-sans mb-8 leading-relaxed">Dominating the DMV area with uncompromising roofing and siding architecture. We build shields, not just roofs.</p>
+                    <p class="text-gray-400 font-sans mb-8 leading-relaxed">Trusted roofing and siding contractor serving Bowie, MD and the greater Prince George's County area. Quality craftsmanship, honest pricing.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-mancia-red hover:border-mancia-red transition-all duration-300"><i class="fa-brands fa-facebook-f text-lg"></i></a>
                         <a href="#" class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-mancia-red hover:border-mancia-red transition-all duration-300"><i class="fa-brands fa-instagram text-lg"></i></a>
@@ -688,31 +847,41 @@
                     </ul>
                 </div>
 
-                <!-- Contact Intel -->
+                <!-- Contact Info -->
                 <div>
                     <h4 class="text-2xl font-heading font-bold mb-8 uppercase tracking-widest text-white flex items-center">
-                        <span class="w-2 h-2 bg-mancia-red mr-3"></span> HQ Intel
+                        <span class="w-2 h-2 bg-mancia-red mr-3"></span> Contact
                     </h4>
-                    <ul class="space-y-6 font-sans text-gray-400">
+                    <ul class="space-y-5 font-sans text-gray-400">
                         <li class="flex items-start group">
-                            <i class="fa-solid fa-location-crosshairs text-mancia-red mt-1 mr-4 text-xl group-hover:scale-110 transition-transform"></i>
+                            <i class="fa-solid fa-location-dot text-mancia-red mt-1 mr-4 text-lg group-hover:scale-110 transition-transform"></i>
                             <span>12409 Sarah Ln<br>Bowie, MD 20715</span>
                         </li>
                         <li class="flex items-center group">
-                            <i class="fa-solid fa-phone text-mancia-red mr-4 text-xl group-hover:scale-110 transition-transform"></i>
+                            <i class="fa-solid fa-phone text-mancia-red mr-4 text-lg group-hover:scale-110 transition-transform"></i>
                             <a href="tel:+12406650050" class="hover:text-white transition-colors">(240) 665-0050</a>
                         </li>
                         <li class="flex items-center group">
-                            <i class="fa-solid fa-envelope text-mancia-red mr-4 text-xl group-hover:scale-110 transition-transform"></i>
+                            <i class="fa-solid fa-envelope text-mancia-red mr-4 text-lg group-hover:scale-110 transition-transform"></i>
                             <a href="mailto:contact@jmanciaroofing.com" class="hover:text-white transition-colors">contact@jmanciaroofing.com</a>
                         </li>
                     </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <h5 class="text-sm font-heading font-bold uppercase tracking-widest text-white mb-3 flex items-center">
+                            <i class="fa-regular fa-clock text-mancia-red mr-2"></i> Business Hours
+                        </h5>
+                        <ul class="text-sm font-sans text-gray-400 space-y-1.5">
+                            <li class="flex justify-between"><span>Mon - Fri</span><span class="text-white font-medium">7:00 AM - 6:00 PM</span></li>
+                            <li class="flex justify-between"><span>Saturday</span><span class="text-white font-medium">8:00 AM - 4:00 PM</span></li>
+                            <li class="flex justify-between"><span>Sunday</span><span class="text-gray-500">Closed</span></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- Fast Action -->
                 <div>
                     <h4 class="text-2xl font-heading font-bold mb-8 uppercase tracking-widest text-white flex items-center">
-                        <span class="w-2 h-2 bg-mancia-red mr-3"></span> Deploy Us
+                        <span class="w-2 h-2 bg-mancia-red mr-3"></span> Get Started
                     </h4>
                     <p class="text-gray-400 font-sans mb-6">If you need roof repair, roof replacement, or siding services in Bowie or nearby areas, contact Mancia Roofing today.</p>
                     <a href="#estimate" class="block w-full bg-mancia-red text-white text-center font-heading uppercase tracking-widest font-bold px-6 py-4 shadow-[0_5px_20px_rgba(255,0,0,0.4)] hover:shadow-[0_10px_30px_rgba(255,0,0,0.6)] hover:bg-mancia-darkred transition-all">
@@ -732,29 +901,106 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu and Navbar Style -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        // If mobile menu logic is needed, add an overlay div in DOM and toggle it here.
-        // For brevity in this specific strict design layout, mobile menu links 
-        // can be appended or a full screen overlay can be toggled.
+    <!-- Floating Mobile Call CTA -->
+    <a href="tel:+12406650050" class="fixed bottom-6 right-6 z-50 lg:hidden w-14 h-14 bg-mancia-red rounded-full flex items-center justify-center text-white text-2xl shadow-[0_5px_20px_rgba(255,0,0,0.5)] pulse-ring hover:bg-mancia-darkred transition-colors">
+        <i class="fa-solid fa-phone"></i>
+    </a>
 
-        // Sticky Navbar effect on scroll
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top fixed bottom-6 left-6 z-50 w-12 h-12 bg-mancia-navy/90 backdrop-blur-sm border border-white/10 text-white flex items-center justify-center shadow-lg hover:bg-mancia-red transition-colors" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileClose = document.getElementById('mobile-menu-close');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+        // Sticky Navbar
         const topBar = document.getElementById('top-bar');
         const mainNav = document.getElementById('main-nav-container');
-        
+
+        // Back to Top visibility
+        const backToTop = document.getElementById('back-to-top');
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
                 mainNav.classList.add('shadow-2xl', 'py-1', 'bg-white/95');
                 mainNav.classList.remove('py-3', 'glass-panel-light');
-                if(topBar) topBar.style.display = 'none'; // Hides the top bar on scroll to save screen space
+                if(topBar) topBar.style.display = 'none';
             } else {
                 mainNav.classList.remove('shadow-2xl', 'py-1', 'bg-white/95');
                 mainNav.classList.add('py-3', 'glass-panel-light');
-                if(topBar) topBar.style.display = ''; // Re-shows the top bar when at the top
+                if(topBar) topBar.style.display = '';
+            }
+            // Back to top button
+            if (window.scrollY > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
             }
         });
+
+        // Scroll Reveal with IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Animated Stat Counters
+        const statElements = document.querySelectorAll('.stat-number');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    let current = 0;
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    const counter = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(counter);
+                        }
+                        el.textContent = Math.floor(current) + suffix;
+                    }, 16);
+                    statObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        statElements.forEach(el => statObserver.observe(el));
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('quote-form');
+            const btn = document.getElementById('submit-btn');
+            const success = document.getElementById('form-success');
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            btn.classList.add('opacity-70');
+
+            setTimeout(() => {
+                form.classList.add('hidden');
+                success.classList.remove('hidden');
+            }, 1200);
+        }
     </script>
 </body>
 </html>

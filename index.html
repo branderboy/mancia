@@ -67,13 +67,24 @@
     <style>
         /* Custom Styles for Advanced Geometry & Effects */
         .clip-bottom-slant {
-            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
         }
         .clip-top-slant {
-            clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
         }
         .clip-diagonal {
-            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+            clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
+        }
+        @media (min-width: 768px) {
+            .clip-bottom-slant {
+                clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+            }
+            .clip-top-slant {
+                clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
+            }
+            .clip-diagonal {
+                clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+            }
         }
         .glass-panel {
             background: rgba(255, 255, 255, 0.05);
@@ -151,6 +162,27 @@
         .stat-number {
             font-variant-numeric: tabular-nums;
         }
+        /* Touch-friendly: show service card content on mobile (no hover) */
+        @media (max-width: 767px) {
+            .service-card .service-desc,
+            .service-card .service-list {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        }
+        /* Prevent horizontal overflow on mobile */
+        html, body {
+            overflow-x: hidden;
+        }
+        /* Smooth tap targets for mobile */
+        @media (max-width: 767px) {
+            a, button {
+                -webkit-tap-highlight-color: transparent;
+            }
+            input, select, textarea {
+                font-size: 16px; /* prevent iOS zoom on focus */
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-mancia-navy bg-mancia-cream antialiased selection:bg-mancia-red selection:text-white">
@@ -180,7 +212,7 @@
             <div class="container mx-auto px-4 py-3 flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="flex-shrink-0 relative group">
-                    <img src="header-10_logo_image.png" alt="Mancia Roofing" class="h-14 md:h-16 object-contain relative z-10 transition transform group-hover:scale-105 duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x120/ffffff/000000?text=MANCIA+ROOFING';">
+                    <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/header-10_logo_image.png" alt="Mancia Roofing" class="h-14 md:h-16 object-contain relative z-10 transition transform group-hover:scale-105 duration-300" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-heading font-bold text-2xl md:text-3xl uppercase tracking-wider text-mancia-navy\'>MANCIA<span class=\'text-mancia-red\'>ROOFING</span></span>';">
                 </a>
 
                 <!-- Desktop Menu -->
@@ -238,7 +270,7 @@
     </div>
 
     <!-- Overlapping Hero Section -->
-    <section class="relative w-full min-h-[100vh] flex items-center pt-32 pb-48 clip-bottom-slant bg-mancia-navy">
+    <section class="relative w-full min-h-[85vh] md:min-h-[100vh] flex items-center pt-24 pb-32 md:pt-32 md:pb-48 clip-bottom-slant bg-mancia-navy">
         <!-- Absolute Background Image w/ Mix Blend -->
         <div class="absolute inset-0 w-full h-full z-0">
             <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/Rectangle-2246.jpeg" alt="Roofing Background" class="w-full h-full object-cover mix-blend-multiply opacity-60">
@@ -256,38 +288,38 @@
                         <span class="w-2 h-2 rounded-full bg-mancia-red animate-pulse"></span>
                         <span>Roofing & Siding Services</span>
                     </div>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] uppercase tracking-wide mb-4 drop-shadow-2xl">
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] uppercase tracking-wide mb-4 drop-shadow-2xl">
                         Roofing Contractor in <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-mancia-red to-orange-500">Bowie, MD</span>
                     </h1>
-                    <h2 class="text-xl md:text-2xl font-heading font-medium text-gray-300 uppercase tracking-widest mb-6">
+                    <h2 class="text-base sm:text-xl md:text-2xl font-heading font-medium text-gray-300 uppercase tracking-widest mb-4 sm:mb-6">
                         Leaking roof? Missing shingles? Storm damage?
                     </h2>
-                    <p class="text-lg text-gray-400 mb-10 max-w-2xl font-sans font-light leading-relaxed">
+                    <p class="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 max-w-2xl font-sans font-light leading-relaxed">
                         Mancia Roofing provides roof repair, roof replacement, and siding services for homeowners and businesses in Bowie and across Prince George’s County. Our team handles everything from small roof repairs to full roof replacements using durable materials designed to handle Maryland weather.
                     </p>
                     
-                    <div class="flex flex-wrap items-center gap-6">
-                        <a href="#estimate" class="bg-mancia-red text-white font-heading uppercase tracking-widest font-bold text-lg px-8 py-4 shadow-[0_10px_30px_rgba(255,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(255,0,0,0.7)] hover:bg-mancia-darkred transition-all transform hover:-translate-y-1 relative overflow-hidden group">
-                            <span class="relative z-10 flex items-center">Request a Free Estimate <i class="fa-solid fa-arrow-right ml-3 transition-transform group-hover:translate-x-2"></i></span>
+                    <div class="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 sm:gap-6">
+                        <a href="#estimate" class="bg-mancia-red text-white font-heading uppercase tracking-widest font-bold text-base sm:text-lg px-6 sm:px-8 py-3.5 sm:py-4 shadow-[0_10px_30px_rgba(255,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(255,0,0,0.7)] hover:bg-mancia-darkred transition-all transform hover:-translate-y-1 relative overflow-hidden group w-full sm:w-auto text-center">
+                            <span class="relative z-10 flex items-center justify-center">Request a Free Estimate <i class="fa-solid fa-arrow-right ml-3 transition-transform group-hover:translate-x-2"></i></span>
                         </a>
                         <div class="flex items-center text-white font-heading tracking-widest">
-                            <span class="text-gray-400 mr-3 text-sm uppercase">Call Today:</span>
-                            <a href="tel:+12406650050" class="text-2xl font-bold hover:text-mancia-red transition-colors">(240) 665-0050</a>
+                            <span class="text-gray-400 mr-3 text-xs sm:text-sm uppercase">Call Today:</span>
+                            <a href="tel:+12406650050" class="text-xl sm:text-2xl font-bold hover:text-mancia-red transition-colors">(240) 665-0050</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Hero Form (Glassmorphism) -->
                 <div class="lg:col-span-5" id="estimate">
-                    <div class="glass-panel p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                    <div class="glass-panel p-6 sm:p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group">
                         <!-- Glow effect behind form -->
                         <div class="absolute -top-24 -right-24 w-48 h-48 bg-mancia-red rounded-full mix-blend-screen filter blur-[80px] opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
-                        
+
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-3xl font-heading font-bold text-white uppercase tracking-wide">Get A Free Quote</h3>
-                            <span class="flex items-center text-xs font-sans text-green-400 bg-green-400/10 border border-green-400/20 px-3 py-1">
-                                <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>Online
+                            <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white uppercase tracking-wide">Get A Free Quote</h3>
+                            <span class="flex items-center text-xs font-sans text-green-400 bg-green-400/10 border border-green-400/20 px-2 sm:px-3 py-1 flex-shrink-0 ml-3">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mr-1.5 sm:mr-2 animate-pulse"></span>Online
                             </span>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 font-sans">If your roof is leaking, aging, or damaged after a storm, we inspect the problem and give you a clear solution.</p>
@@ -347,14 +379,36 @@
     <section class="relative z-20 -mt-32 mb-10 px-4">
         <div class="container mx-auto max-w-7xl">
             
-            <!-- Awards Bar (Glassmorphism overlap) -->
-            <div class="bg-white/95 backdrop-blur-md px-8 py-10 rounded-t-xl border-t-4 border-mancia-red shadow-2xl mb-6 flex flex-wrap justify-center md:justify-between items-center gap-8">
-                <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/Google-Reviews-icon-300x121-e1537624971698-1.webp" alt="Google Reviews" class="h-10 md:h-12 object-contain grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/22up-Digital_Promo_Kit_WINNERS_Sticker-1-1.webp" alt="Nextdoor Fave" class="h-12 md:h-14 object-contain grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/yelp-logo_768x512-1.webp" alt="Yelp" class="h-10 md:h-12 object-contain grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/ab-seal-1.webp" alt="BBB Accredited" class="h-12 md:h-14 object-contain grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/Frame-2095586113.jpg" alt="CertainTeed" class="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/Frame-2095586114.png" alt="Certification" class="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all duration-500">
+            <!-- Trust & Awards Bar -->
+            <div class="bg-white/95 backdrop-blur-md px-4 sm:px-8 py-6 sm:py-8 rounded-t-xl border-t-4 border-mancia-red shadow-2xl mb-4 sm:mb-6">
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 items-center text-center">
+                    <div class="flex flex-col items-center group">
+                        <i class="fa-brands fa-google text-2xl sm:text-3xl text-gray-400 group-hover:text-[#4285F4] transition-colors mb-1.5"></i>
+                        <div class="flex text-yellow-400 text-xs mb-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <span class="text-[10px] sm:text-xs font-heading uppercase tracking-wider text-gray-500 font-bold">5.0 Google</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <i class="fa-brands fa-yelp text-2xl sm:text-3xl text-gray-400 group-hover:text-[#d32323] transition-colors mb-1.5"></i>
+                        <div class="flex text-[#d32323] text-xs mb-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <span class="text-[10px] sm:text-xs font-heading uppercase tracking-wider text-gray-500 font-bold">5.0 Yelp</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <i class="fa-solid fa-award text-2xl sm:text-3xl text-gray-400 group-hover:text-green-600 transition-colors mb-1.5"></i>
+                        <span class="text-[10px] sm:text-xs font-heading uppercase tracking-wider text-gray-500 font-bold leading-tight mt-1">Nextdoor<br>Favorite</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <i class="fa-solid fa-building-columns text-2xl sm:text-3xl text-gray-400 group-hover:text-blue-700 transition-colors mb-1.5"></i>
+                        <span class="text-[10px] sm:text-xs font-heading uppercase tracking-wider text-gray-500 font-bold leading-tight mt-1">BBB A+<br>Rated</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <i class="fa-solid fa-certificate text-2xl sm:text-3xl text-gray-400 group-hover:text-mancia-red transition-colors mb-1.5"></i>
+                        <span class="text-[10px] sm:text-xs font-heading uppercase tracking-wider text-gray-500 font-bold leading-tight mt-1">CertainTeed<br>Certified</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <i class="fa-solid fa-shield-halved text-2xl sm:text-3xl text-gray-400 group-hover:text-mancia-navy transition-colors mb-1.5"></i>
+                        <span class="text-[10px] sm:text-xs font-heading uppercase tracking-wider text-gray-500 font-bold leading-tight mt-1">Licensed<br>MHIC# 135827</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Stats Bar -->
@@ -377,76 +431,6 @@
                 </div>
             </div>
 
-            <!-- Feature Cards (Icon-Based Layout) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Feature 1 -->
-                <div class="p-8 shadow-2xl border-b-4 border-mancia-red group hover:-translate-y-2 transition-transform duration-500 cursor-pointer relative overflow-hidden text-center bg-mancia-navy">
-                    <!-- Blurred Image Background -->
-                    <div class="absolute inset-0 z-0 overflow-hidden">
-                        <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/IMG-20250630-WA0011-2-1.jpg" alt="Durable Materials" class="w-full h-full object-cover blur-[8px] scale-110 group-hover:scale-125 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-mancia-navy/85 group-hover:bg-mancia-navy/70 transition-colors duration-500"></div>
-                    </div>
-                    
-                    <div class="w-24 h-24 mx-auto bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 group-hover:bg-mancia-red transition-colors duration-300 shadow-lg relative z-10 border border-white/20">
-                        <i class="fa-solid fa-shield-halved text-4xl text-white transition-colors duration-300"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">Durable Materials</h3>
-                        <p class="text-gray-300 font-medium text-sm font-sans leading-relaxed">We focus on quality workmanship utilizing durable roofing materials designed for Maryland's climate.</p>
-                    </div>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="p-8 shadow-2xl border-b-4 border-mancia-red group hover:-translate-y-2 transition-transform duration-500 cursor-pointer relative overflow-hidden text-center bg-mancia-navy">
-                    <!-- Blurred Image Background -->
-                    <div class="absolute inset-0 z-0 overflow-hidden">
-                        <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/IMG-20250630-WA0011-2-2.jpg" alt="Skilled Professionals" class="w-full h-full object-cover blur-[8px] scale-110 group-hover:scale-125 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-mancia-navy/85 group-hover:bg-mancia-navy/70 transition-colors duration-500"></div>
-                    </div>
-                    
-                    <div class="w-24 h-24 mx-auto bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 group-hover:bg-mancia-red transition-colors duration-300 shadow-lg relative z-10 border border-white/20">
-                        <i class="fa-solid fa-hard-hat text-4xl text-white transition-colors duration-300"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">Skilled Professionals</h3>
-                        <p class="text-gray-300 font-medium text-sm font-sans leading-relaxed">Our highly skilled roofing professionals deliver work that protects homes while improving curb appeal.</p>
-                    </div>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="p-8 shadow-2xl border-b-4 border-mancia-red group hover:-translate-y-2 transition-transform duration-500 cursor-pointer relative overflow-hidden text-center bg-mancia-navy">
-                    <!-- Blurred Image Background -->
-                    <div class="absolute inset-0 z-0 overflow-hidden">
-                        <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/highlight-14_image.webp" alt="Competitive Pricing" class="w-full h-full object-cover blur-[8px] scale-110 group-hover:scale-125 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-mancia-navy/85 group-hover:bg-mancia-navy/70 transition-colors duration-500"></div>
-                    </div>
-                    
-                    <div class="w-24 h-24 mx-auto bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 group-hover:bg-mancia-red transition-colors duration-300 shadow-lg relative z-10 border border-white/20">
-                        <i class="fa-solid fa-hand-holding-dollar text-4xl text-white transition-colors duration-300"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">Competitive Pricing</h3>
-                        <p class="text-gray-300 font-medium text-sm font-sans leading-relaxed">We provide clear estimates and timelines, offering dependable service without breaking the bank.</p>
-                    </div>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="p-8 shadow-2xl border-b-4 border-mancia-red group hover:-translate-y-2 transition-transform duration-500 cursor-pointer relative overflow-hidden text-center bg-mancia-navy">
-                    <!-- Blurred Image Background -->
-                    <div class="absolute inset-0 z-0 overflow-hidden">
-                        <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/DJI_0548-3-scaled.jpg" alt="Reliable Local Service" class="w-full h-full object-cover blur-[8px] scale-110 group-hover:scale-125 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-mancia-navy/85 group-hover:bg-mancia-navy/70 transition-colors duration-500"></div>
-                    </div>
-                    
-                    <div class="w-24 h-24 mx-auto bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 group-hover:bg-mancia-red transition-colors duration-300 shadow-lg relative z-10 border border-white/20">
-                        <i class="fa-solid fa-truck-fast text-4xl text-white transition-colors duration-300"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white uppercase tracking-wide">Reliable Local Service</h3>
-                        <p class="text-gray-300 font-medium text-sm font-sans leading-relaxed">A trusted, locally-based contractor focused on long-lasting results and clear communication.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -492,7 +476,7 @@
 
                 <div class="order-1 lg:order-2">
                     <span class="text-mancia-red font-bold tracking-widest uppercase text-sm reveal">About Us</span>
-                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-mancia-navy mb-6 uppercase tracking-wide mt-2">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-mancia-navy mb-6 uppercase tracking-wide mt-2">
                         Trusted Roofing Company in <br><span class="text-mancia-red">Bowie, Maryland</span>
                     </h2>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed font-sans font-light">
@@ -502,17 +486,17 @@
                         We understand the roofing issues common in this area. From storm damage to aging shingles, Maryland homes face weather conditions that require strong materials and proper installation. Our goal is simple: install and repair roofs that protect your home for years to come.
                     </p>
                     <!-- Trust badges -->
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-4 py-2.5">
-                            <i class="fa-solid fa-shield-halved text-mancia-red text-lg mr-2.5"></i>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-3 sm:px-4 py-2.5">
+                            <i class="fa-solid fa-shield-halved text-mancia-red text-lg mr-2.5 flex-shrink-0"></i>
                             <div class="text-xs font-heading uppercase tracking-widest text-mancia-navy font-bold leading-tight">Licensed<br><span class="text-gray-500 font-sans font-normal normal-case tracking-normal">MHIC #135827</span></div>
                         </div>
-                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-4 py-2.5">
-                            <i class="fa-solid fa-file-shield text-mancia-red text-lg mr-2.5"></i>
+                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-3 sm:px-4 py-2.5">
+                            <i class="fa-solid fa-file-shield text-mancia-red text-lg mr-2.5 flex-shrink-0"></i>
                             <div class="text-xs font-heading uppercase tracking-widest text-mancia-navy font-bold leading-tight">Fully Insured<br><span class="text-gray-500 font-sans font-normal normal-case tracking-normal">Liability & Workers Comp</span></div>
                         </div>
-                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-4 py-2.5">
-                            <i class="fa-solid fa-award text-mancia-red text-lg mr-2.5"></i>
+                        <div class="flex items-center bg-white border border-gray-200 shadow-sm px-3 sm:px-4 py-2.5">
+                            <i class="fa-solid fa-award text-mancia-red text-lg mr-2.5 flex-shrink-0"></i>
                             <div class="text-xs font-heading uppercase tracking-widest text-mancia-navy font-bold leading-tight">Warranty<br><span class="text-gray-500 font-sans font-normal normal-case tracking-normal">Manufacturer Backed</span></div>
                         </div>
                     </div>
@@ -533,7 +517,7 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                 <div class="max-w-3xl reveal">
                     <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">Comprehensive Protection</span>
-                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-mancia-navy mt-2 uppercase tracking-wide">Roofing & Siding Services</h2>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-mancia-navy mt-2 uppercase tracking-wide">Roofing & Siding Services</h2>
                 </div>
             </div>
 
@@ -541,20 +525,20 @@
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <!-- Roof Repair -->
-                <div class="relative h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
+                <div class="service-card relative h-[380px] sm:h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
                     <div class="absolute inset-0 z-0">
                         <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/DJI_0041-2-scaled.jpg" alt="Roof Repair" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 mix-blend-overlay opacity-60">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-mancia-navy via-mancia-navy/80 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
-                    
-                    <div class="absolute bottom-0 left-0 w-full p-8 md:p-10 z-20">
-                        <h3 class="text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
-                            <i class="fa-solid fa-hammer text-mancia-red mr-4 text-2xl"></i> Roof Repair
+
+                    <div class="absolute bottom-0 left-0 w-full p-6 sm:p-8 md:p-10 z-20">
+                        <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
+                            <i class="fa-solid fa-hammer text-mancia-red mr-3 sm:mr-4 text-xl sm:text-2xl"></i> Roof Repair
                         </h3>
-                        <p class="text-gray-300 font-sans text-sm mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                        <p class="service-desc text-gray-300 font-sans text-sm mb-4 sm:mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                             If your roof has a leak, damaged shingles, or flashing issues, quick repair can prevent larger structural damage. We diagnose and target repairs to restore integrity.
                         </p>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-white font-sans text-sm font-light opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                        <ul class="service-list grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-white font-sans text-sm font-light opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Roof leaks</li>
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Missing/damaged shingles</li>
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Flashing repair</li>
@@ -565,20 +549,20 @@
                 </div>
 
                 <!-- Roof Replacement -->
-                <div class="relative h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
+                <div class="service-card relative h-[380px] sm:h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
                     <div class="absolute inset-0 z-0">
                         <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/DJI_0392-2-scaled.jpg" alt="Roof Replacement" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 mix-blend-overlay opacity-60">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-mancia-navy via-mancia-navy/80 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
-                    
-                    <div class="absolute bottom-0 left-0 w-full p-8 md:p-10 z-20">
-                        <h3 class="text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
-                            <i class="fa-solid fa-house-chimney text-mancia-red mr-4 text-2xl"></i> Roof Replacement
+
+                    <div class="absolute bottom-0 left-0 w-full p-6 sm:p-8 md:p-10 z-20">
+                        <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
+                            <i class="fa-solid fa-house-chimney text-mancia-red mr-3 sm:mr-4 text-xl sm:text-2xl"></i> Roof Replacement
                         </h3>
-                        <p class="text-gray-300 font-sans text-sm mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                        <p class="service-desc text-gray-300 font-sans text-sm mb-4 sm:mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                             When a roof reaches the end of its lifespan or has widespread damage, replacement is often the best solution. We install durable systems for long-term performance.
                         </p>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-white font-sans text-sm font-light opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                        <ul class="service-list grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-white font-sans text-sm font-light opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Asphalt shingle roofing</li>
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Architectural shingles</li>
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Flat roofing systems</li>
@@ -589,40 +573,40 @@
                 </div>
 
                 <!-- Roof Maintenance & Inspections -->
-                <div class="relative h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
+                <div class="service-card relative h-[380px] sm:h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
                     <div class="absolute inset-0 z-0">
                         <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/DJI_0201-2-scaled.jpg" alt="Roof Inspections" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 mix-blend-overlay opacity-60">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-mancia-navy via-mancia-navy/80 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
-                    
-                    <div class="absolute bottom-0 left-0 w-full p-8 md:p-10 z-20">
-                        <h3 class="text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
-                            <i class="fa-solid fa-clipboard-check text-mancia-red mr-4 text-2xl"></i> Maintenance & Inspections
+
+                    <div class="absolute bottom-0 left-0 w-full p-6 sm:p-8 md:p-10 z-20">
+                        <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
+                            <i class="fa-solid fa-clipboard-check text-mancia-red mr-3 sm:mr-4 text-xl sm:text-2xl"></i> Maintenance & Inspections
                         </h3>
-                        <p class="text-gray-300 font-sans text-sm mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                        <p class="service-desc text-gray-300 font-sans text-sm mb-4 sm:mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                             Routine inspections help detect roofing problems early. Our roof inspections identify issues like shingle wear, flashing problems, and ventilation concerns before they turn into expensive repairs.
                         </p>
-                        <a href="#estimate" class="inline-block text-mancia-red font-heading uppercase tracking-widest font-bold text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                        <a href="#estimate" class="service-list inline-block text-mancia-red font-heading uppercase tracking-widest font-bold text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
                             Schedule an Inspection <i class="fa-solid fa-arrow-right ml-1"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Siding Installation & Repair -->
-                <div class="relative h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
+                <div class="service-card relative h-[380px] sm:h-[450px] overflow-hidden group shadow-2xl bg-mancia-navy">
                     <div class="absolute inset-0 z-0">
                         <img src="https://jmanciaroofing.com/wp-content/uploads/2026/01/225_9c83de82-ef95-42af-a9f8-688963e0b177-2.jpg" alt="Siding Services" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 mix-blend-overlay opacity-60">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-mancia-navy via-mancia-navy/80 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
-                    
-                    <div class="absolute bottom-0 left-0 w-full p-8 md:p-10 z-20">
-                        <h3 class="text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
-                            <i class="fa-solid fa-layer-group text-mancia-red mr-4 text-2xl"></i> Siding Services
+
+                    <div class="absolute bottom-0 left-0 w-full p-6 sm:p-8 md:p-10 z-20">
+                        <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-3 uppercase tracking-wide flex items-center">
+                            <i class="fa-solid fa-layer-group text-mancia-red mr-3 sm:mr-4 text-xl sm:text-2xl"></i> Siding Services
                         </h3>
-                        <p class="text-gray-300 font-sans text-sm mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                        <p class="service-desc text-gray-300 font-sans text-sm mb-4 sm:mb-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                             We also provide siding services to improve the protection and appearance of your home.
                         </p>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-white font-sans text-sm font-light opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                        <ul class="service-list grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-white font-sans text-sm font-light opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Vinyl siding installation</li>
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Fiber cement (Hardie)</li>
                             <li><i class="fa-solid fa-check text-mancia-red mr-2"></i> Siding replacement</li>
@@ -634,7 +618,7 @@
             </div>
 
             <!-- GMB Map Embed -->
-            <div class="mt-20 w-full h-[400px] md:h-[500px] shadow-2xl border-b-4 border-mancia-red relative group overflow-hidden bg-mancia-navy">
+            <div class="mt-12 sm:mt-20 w-full h-[300px] sm:h-[400px] md:h-[500px] shadow-2xl border-b-4 border-mancia-red relative group overflow-hidden bg-mancia-navy">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.835168695697!2d-76.73696629999999!3d38.9734316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c08df760ffff%3A0xab8a00a300ac36ee!2sMancia%20Roofing!5e0!3m2!1sen!2sus!4v1773176812382!5m2!1sen!2sus" class="w-full h-full grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 
                 <!-- Floating Location Badge -->
@@ -663,7 +647,7 @@
                             <i class="fa-brands fa-google"></i>
                         </div>
                         <div>
-                            <h3 class="text-3xl font-heading font-bold text-white uppercase tracking-wide">Mancia Roofing</h3>
+                            <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white uppercase tracking-wide">Mancia Roofing</h3>
                             <p class="text-gray-400 font-sans text-sm uppercase tracking-widest">Bowie, MD</p>
                         </div>
                     </div>
@@ -700,13 +684,13 @@
                     <div class="flex justify-between items-end mb-8">
                         <div>
                             <span class="text-mancia-red font-bold tracking-widest uppercase text-sm">What Our Clients Say</span>
-                            <h2 class="text-4xl font-heading font-bold text-white mt-1 uppercase tracking-wide">Highly Rated by Homeowners</h2>
+                            <h2 class="text-2xl sm:text-4xl font-heading font-bold text-white mt-1 uppercase tracking-wide">Highly Rated by Homeowners</h2>
                         </div>
                     </div>
                     
-                    <div class="grid md:grid-cols-3 gap-6">
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         <!-- Review 1 -->
-                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
+                        <div class="glass-panel p-6 sm:p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
                             <div>
                                 <div class="flex items-center justify-between mb-4 relative z-10">
                                     <div class="flex text-mancia-red text-sm">
@@ -725,7 +709,7 @@
                             </div>
                         </div>
                         <!-- Review 2 -->
-                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
+                        <div class="glass-panel p-6 sm:p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
                             <div>
                                 <div class="flex items-center justify-between mb-4 relative z-10">
                                     <div class="flex text-mancia-red text-sm">
@@ -744,7 +728,7 @@
                             </div>
                         </div>
                         <!-- Review 3 -->
-                        <div class="glass-panel p-8 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
+                        <div class="glass-panel p-6 sm:p-8 sm:col-span-2 lg:col-span-1 relative hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between reveal">
                             <div>
                                 <div class="flex items-center justify-between mb-4 relative z-10">
                                     <div class="flex text-mancia-red text-sm">
@@ -780,7 +764,7 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <span class="text-mancia-red font-bold tracking-widest uppercase text-sm reveal">Resilience</span>
-                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6 uppercase tracking-wide mt-2 reveal">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-6 uppercase tracking-wide mt-2 reveal">
                         Roofing Built for <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-mancia-red to-orange-500">Maryland Weather</span>
                     </h2>
                     <p class="text-lg text-gray-300 mb-6 leading-relaxed font-sans font-light">
@@ -816,15 +800,15 @@
     </section>
 
     <!-- Massive Footer -->
-    <footer class="bg-mancia-dark text-white pt-32 pb-12 relative overflow-hidden -mt-16">
+    <footer class="bg-mancia-dark text-white pt-20 sm:pt-32 pb-24 sm:pb-12 relative overflow-hidden -mt-16">
         <!-- Abstract graphic -->
         <div class="absolute -bottom-48 -left-48 w-96 h-96 border-[40px] border-white/5 rounded-full pointer-events-none"></div>
 
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 mb-12 sm:mb-16">
                 <!-- Brand -->
                 <div class="lg:col-span-1">
-                    <img src="header-10_logo_image.png" alt="Mancia Roofing" class="h-16 bg-white/90 backdrop-blur-sm p-3 rounded mb-8" onerror="this.onerror=null; this.src='https://placehold.co/400x120/ffffff/000000?text=MANCIA+ROOFING';">
+                    <img src="https://jmanciaroofing.com/wp-content/uploads/2025/12/header-10_logo_image.png" alt="Mancia Roofing" class="h-16 bg-white/90 backdrop-blur-sm p-3 rounded mb-8" onerror="this.onerror=null; this.parentElement.insertAdjacentHTML('afterbegin', '<div class=\'bg-white/90 backdrop-blur-sm p-3 rounded mb-8 inline-block\'><span class=\'font-heading font-bold text-2xl uppercase tracking-wider text-mancia-navy\'>MANCIA<span class=\'text-mancia-red\'>ROOFING</span></span></div>'); this.remove();">
                     <p class="text-gray-400 font-sans mb-8 leading-relaxed">Trusted roofing and siding contractor serving Bowie, MD and the greater Prince George's County area. Quality craftsmanship, honest pricing.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-mancia-red hover:border-mancia-red transition-all duration-300"><i class="fa-brands fa-facebook-f text-lg"></i></a>
@@ -907,7 +891,7 @@
     </a>
 
     <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top fixed bottom-6 left-6 z-50 w-12 h-12 bg-mancia-navy/90 backdrop-blur-sm border border-white/10 text-white flex items-center justify-center shadow-lg hover:bg-mancia-red transition-colors" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <button id="back-to-top" class="back-to-top fixed bottom-24 lg:bottom-6 right-6 lg:left-6 z-40 lg:z-50 w-11 h-11 lg:w-12 lg:h-12 bg-mancia-navy/90 backdrop-blur-sm border border-white/10 text-white flex items-center justify-center shadow-lg hover:bg-mancia-red transition-colors" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="fa-solid fa-chevron-up"></i>
     </button>
 

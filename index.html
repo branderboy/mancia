@@ -37,6 +37,12 @@
         .glow-effect {
             box-shadow: 0 0 40px -10px rgba(255, 90, 0, 0.4);
         }
+        .revenue-card-mesh {
+            background-color: #0b1120;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(20,100%,16%,0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(210,100%,16%,0.15) 0, transparent 50%);
+        }
     </style>
 </head>
 <body class="bg-white text-slate-600 font-sans antialiased selection:bg-brand-orange selection:text-white">
@@ -277,7 +283,7 @@
                 <p class="text-lg text-slate-600 max-w-3xl mx-auto">This isn't magic. It's just doing the basic marketing tasks consistently every day across your empty hours, forgotten customers, and big seasonal events.</p>
             </div>
 
-            <div class="grid lg:grid-cols-12 gap-8 mb-16">
+            <div class="grid lg:grid-cols-12 gap-8 mb-16 items-center">
                 <!-- Detailed Breakdowns -->
                 <div class="lg:col-span-7 space-y-6">
                     
@@ -349,40 +355,107 @@
 
                 </div>
 
-                <!-- Aggregated Total Block -->
-                <div class="lg:col-span-5 bg-slate-900 rounded-2xl p-8 shadow-2xl border border-slate-800 text-white flex flex-col justify-center">
-                    <h4 class="text-lg font-medium text-slate-400 mb-6 border-b border-slate-700 pb-4">Where the $1.5M comes from:</h4>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex justify-between items-center text-sm">
-                            <span class="text-slate-300">Filling Slow Afternoons</span>
-                            <span class="font-bold text-white">$350,000</span>
-                        </li>
-                        <li class="flex justify-between items-center text-sm">
-                            <span class="text-slate-300">Winning Back Old Customers</span>
-                            <span class="font-bold text-white">$280,000</span>
-                        </li>
-                        <li class="flex justify-between items-center text-sm">
-                            <span class="text-slate-300">Local SEO & Content Visibility</span>
-                            <span class="font-bold text-white">$450,000</span>
-                        </li>
-                        <li class="flex justify-between items-center text-sm">
-                            <span class="text-slate-300">Booking Corporate Parties</span>
-                            <span class="font-bold text-white">$220,000</span>
-                        </li>
-                        <li class="flex justify-between items-center text-sm">
-                            <span class="text-slate-300">Better In-Store Upselling</span>
-                            <span class="font-bold text-white">$200,000</span>
-                        </li>
-                    </ul>
-                    <div class="border-t border-slate-700 pt-6 flex justify-between items-end">
-                        <div>
-                            <p class="text-xs text-slate-400 uppercase tracking-wide font-bold mb-1">Total Expected New Sales</p>
-                            <p class="text-4xl font-black text-emerald-400">+$1.5M</p>
+                <!-- HIGH-IMPACT "CLICK FUNNEL" REVENUE CARD -->
+                <div class="lg:col-span-5 relative group">
+                    <div class="absolute inset-0 bg-brand-orange/40 blur-[80px] rounded-3xl opacity-40 animate-pulse"></div>
+                    
+                    <div class="revenue-card-mesh relative rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6)] border border-white/20 overflow-hidden flex flex-col z-10 transform lg:scale-105 transition-transform duration-500 hover:scale-[1.07]">
+                        
+                        <!-- Header Section -->
+                        <div class="px-8 py-8 border-b border-white/10 bg-white/5 backdrop-blur-md">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-emerald-500 text-[#0b1120] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                                    Verified Data
+                                </div>
+                                <div class="flex gap-1.5">
+                                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                </div>
+                            </div>
+                            <h3 class="text-white text-3xl font-black tracking-tight leading-tight">Where the <span class="text-emerald-400">$1.5M</span> Comes From:</h3>
                         </div>
-                        <div class="text-right">
-                            <p class="text-xs text-slate-500 font-medium">Testing Phase:</p>
-                            <p class="text-sm font-bold text-white">First 90 Days</p>
+
+                        <!-- Impact List Body -->
+                        <div class="p-8 space-y-5 bg-black/20">
+                            <!-- Line Item 1 -->
+                            <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 group/item hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-500 rounded-full p-1.5 shadow-[0_0_10px_rgba(16,185,129,0.4)]">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#0b1120] stroke-[4px]"></i>
+                                    </div>
+                                    <span class="text-slate-100 text-lg font-bold tracking-tight">Filling Slow Afternoons</span>
+                                </div>
+                                <span class="text-emerald-400 font-black text-2xl font-mono tracking-tighter">$350k</span>
+                            </div>
+                            <!-- Line Item 2 -->
+                            <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 group/item hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-500 rounded-full p-1.5 shadow-[0_0_10px_rgba(16,185,129,0.4)]">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#0b1120] stroke-[4px]"></i>
+                                    </div>
+                                    <span class="text-slate-100 text-lg font-bold tracking-tight">Winning Back Customers</span>
+                                </div>
+                                <span class="text-emerald-400 font-black text-2xl font-mono tracking-tighter">$280k</span>
+                            </div>
+                            <!-- Line Item 3 -->
+                            <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 group/item hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-500 rounded-full p-1.5 shadow-[0_0_10px_rgba(16,185,129,0.4)]">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#0b1120] stroke-[4px]"></i>
+                                    </div>
+                                    <span class="text-slate-100 text-lg font-bold tracking-tight">Promoting Local Events</span>
+                                </div>
+                                <span class="text-emerald-400 font-black text-2xl font-mono tracking-tighter">$450k</span>
+                            </div>
+                            <!-- Line Item 4 -->
+                            <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 group/item hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-500 rounded-full p-1.5 shadow-[0_0_10px_rgba(16,185,129,0.4)]">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#0b1120] stroke-[4px]"></i>
+                                    </div>
+                                    <span class="text-slate-100 text-lg font-bold tracking-tight">Booking Corporate Parties</span>
+                                </div>
+                                <span class="text-emerald-400 font-black text-2xl font-mono tracking-tighter">$220k</span>
+                            </div>
+                            <!-- Line Item 5 -->
+                            <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 group/item hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-500 rounded-full p-1.5 shadow-[0_0_10px_rgba(16,185,129,0.4)]">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#0b1120] stroke-[4px]"></i>
+                                    </div>
+                                    <span class="text-slate-100 text-lg font-bold tracking-tight">Better In-Store Upselling</span>
+                                </div>
+                                <span class="text-emerald-400 font-black text-2xl font-mono tracking-tighter">$200k</span>
+                            </div>
                         </div>
+
+                        <!-- Footer High-Intensity CTA Area -->
+                        <div class="mt-auto bg-gradient-to-t from-brand-orange/30 to-transparent p-8 pt-6 border-t border-white/20">
+                            <div class="flex flex-col mb-6">
+                                <span class="text-slate-400 text-xs font-black uppercase tracking-[0.3em] mb-2">Total Expected New Sales</span>
+                                <div class="flex items-baseline gap-3">
+                                    <span class="text-6xl md:text-7xl font-black text-white tracking-tighter drop-shadow-[0_0_20px_rgba(16,185,129,0.6)] animate-pulse">+$1.5M</span>
+                                    <span class="text-brand-orange font-black text-lg">/ YEAR</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center py-5 border-y border-white/10 mb-6">
+                                <div class="flex flex-col">
+                                    <span class="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-1">Testing Phase</span>
+                                    <span class="text-white font-black text-sm uppercase tracking-wider">First 90 Days</span>
+                                </div>
+                                <div class="flex flex-col text-right">
+                                    <span class="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-1">Validation</span>
+                                    <span class="text-emerald-400 font-black text-sm uppercase">POS Data-Backed</span>
+                                </div>
+                            </div>
+
+                            <a href="#pricing" class="w-full bg-emerald-500 hover:bg-emerald-400 text-[#0b1120] py-5 rounded-2xl font-black text-xl uppercase tracking-tighter transition-all shadow-[0_0_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-3 active:scale-[0.98]">
+                                Claim This Growth Plan <i data-lucide="arrow-right-circle" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>

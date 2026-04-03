@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StoreOS | Revenue Execution Layer</title>
+    <title>StoreOS | Revenue System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -40,6 +40,12 @@
             background-image: 
                 radial-gradient(at 0% 0%, hsla(20,100%,16%,0.25) 0, transparent 50%), 
                 radial-gradient(at 100% 100%, hsla(210,100%,16%,0.15) 0, transparent 50%);
+        }
+        .stack-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stack-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -78,7 +84,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-brown/10 border border-brand-brown/20 text-brand-brown text-sm font-bold mb-6">
-                        Operational Engine: Capitol Heights Model Store
+                        Internal System: Capitol Heights Model Store
                     </div>
                     <h1 class="font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
                         <span class="block text-4xl md:text-5xl lg:text-6xl mb-2 tracking-tighter">You don’t have a demand problem.</span>
@@ -86,7 +92,7 @@
                     </h1>
                     
                     <p class="text-xl text-slate-600 mb-2 max-w-2xl leading-relaxed">
-                        This system acts as a <strong class="text-slate-900">Revenue Execution Layer</strong> by serving as your automated <strong class="text-brand-orange">in store Marketing & Sales Rep</strong>. It uses your store's data to send out the right promotions at the perfect time to add <strong class="text-slate-900">$1.5M in extra sales</strong>.
+                        This system acts as your automated <strong class="text-brand-orange">in store Marketing & Sales Rep</strong>. It reads what is happening around your store and turns that into traffic to add <strong class="text-slate-900">$1.5M in extra sales</strong>.
                     </p>
                     <p class="text-lg font-bold text-brand-brown mb-8 italic">Nothing here is new. It’s just finally being executed in time.</p>
                     
@@ -106,7 +112,7 @@
                             <i data-lucide="trending-up" class="w-6 h-6 text-emerald-600"></i>
                         </div>
                         <div>
-                            <p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Estimated Extra Sales</p>
+                            <p class="text-xs text-slate-500 uppercase font-bold tracking-wider">Estimated Sales Lift</p>
                             <p class="text-xl lg:text-2xl text-slate-900 font-black">+$1.5M/yr</p>
                         </div>
                     </div>
@@ -116,46 +122,160 @@
     </section>
 
     <!-- DUAL LEVEL EXPLANATION -->
-    <section class="py-12 bg-white border-y border-slate-100">
+    <section class="py-16 bg-slate-50 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">How to Think About This System</h2>
-                <div class="w-20 h-1 bg-brand-orange mx-auto"></div>
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-black text-brand-orange uppercase tracking-[0.3em] mb-4">The Plan</h2>
+                <h3 class="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">What This System Does For You</h3>
+                <div class="w-24 h-2 bg-brand-orange mx-auto mt-6 rounded-full"></div>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- For Corporate -->
-                <div class="p-8 rounded-3xl bg-brand-brown text-white border border-white/10 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10">
-                        <i data-lucide="layers" class="w-32 h-32"></i>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                
+                <!-- Corporate Card (Down to Earth Executive View) -->
+                <div class="stack-card bg-brand-brown rounded-[3rem] border-[6px] border-white/10 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col relative group">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="shield-check" class="w-48 h-48"></i>
                     </div>
-                    <h3 class="text-brand-orange font-black text-xs uppercase tracking-widest mb-4 relative z-10">For Corporate Leaders</h3>
-                    <h4 class="text-2xl font-bold mb-6 relative z-10">A Control Layer for Sales</h4>
-                    <ul class="space-y-4 relative z-10">
-                        <li class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-emerald-500"></i> <span class="text-slate-300">Standardizes marketing across every store.</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="eye" class="w-5 h-5 text-emerald-500"></i> <span class="text-slate-300">Shows you exactly what drives revenue at each location.</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="bar-chart" class="w-5 h-5 text-emerald-500"></i> <span class="text-slate-300 italic">No extra reporting work needed from managers.</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="lock" class="w-5 h-5 text-emerald-500"></i> <span class="text-slate-300">Gives corporate control over local execution.</span></li>
-                    </ul>
+                    
+                    <div class="bg-brand-orange text-white py-2 text-center text-[10px] font-black uppercase tracking-[0.4em] relative z-10">
+                        Corporate Control
+                    </div>
+
+                    <div class="p-10 text-center flex flex-col items-center relative z-10">
+                        <div class="w-24 h-24 bg-white/5 border-2 border-brand-orange/30 rounded-full flex items-center justify-center mb-8 shadow-inner">
+                            <i data-lucide="bar-chart-3" class="w-10 h-10 text-brand-orange"></i>
+                        </div>
+
+                        <h4 class="text-brand-orange font-black text-xs uppercase tracking-[0.3em] mb-3">Executive Team</h4>
+                        <h3 class="text-white text-4xl font-black uppercase tracking-tight mb-4">Total Sales Control</h3>
+                        <div class="bg-emerald-500/10 border border-emerald-500/20 px-6 py-2 rounded-full mb-10">
+                            <p class="text-emerald-400 font-black text-lg uppercase tracking-tight">Stop Guessing. See the Truth.</p>
+                        </div>
+                        
+                        <div class="w-full space-y-5">
+                            <div class="flex items-center gap-5 bg-white/5 border border-white/10 p-6 rounded-3xl text-left hover:bg-white/10 transition-colors">
+                                <div class="bg-emerald-500 rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-brand-brown stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xl font-black leading-none mb-1">One Playbook</p>
+                                    <p class="text-slate-400 text-sm font-medium">Make sure every store uses the same winning plan</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 bg-white/5 border border-white/10 p-6 rounded-3xl text-left hover:bg-white/10 transition-colors">
+                                <div class="bg-emerald-500 rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-brand-brown stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xl font-black leading-none mb-1">Revenue Drivers</p>
+                                    <p class="text-slate-400 text-sm font-medium">See exactly what makes your guests spend money</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 bg-white/5 border border-white/10 p-6 rounded-3xl text-left hover:bg-white/10 transition-colors">
+                                <div class="bg-emerald-500 rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-brand-brown stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xl font-black leading-none mb-1">Live Visibility</p>
+                                    <p class="text-slate-400 text-sm font-medium">No more asking for reports. The data is live.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 bg-white/5 border border-white/10 p-6 rounded-3xl text-left hover:bg-white/10 transition-colors">
+                                <div class="bg-emerald-500 rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-brand-brown stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white text-xl font-black leading-none mb-1">Central Drive</p>
+                                    <p class="text-slate-400 text-sm font-medium">Drive sales at every location from your desk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-auto bg-black/30 p-8 text-center border-t border-white/10">
+                        <span class="text-white/40 text-[11px] font-black uppercase tracking-[0.3em]">Direct Revenue Command</span>
+                    </div>
                 </div>
-                <!-- For Store Managers -->
-                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-xl">
-                    <h3 class="text-brand-brown font-black text-xs uppercase tracking-widest mb-4">For Store Managers (GMs)</h3>
-                    <h4 class="text-2xl font-bold text-slate-900 mb-6">Your Automated Marketing Rep</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-brand-orange"></i> <span class="text-slate-700">A digital helper that tells you exactly what to do.</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="zap" class="w-5 h-5 text-brand-orange"></i> <span class="text-slate-700">Sends out all your local promotions automatically.</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="minus-circle" class="w-5 h-5 text-brand-orange"></i> <span class="text-slate-700">No change to how you run your shift. It works around you.</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="users" class="w-5 h-5 text-brand-orange"></i> <span class="text-slate-700">Spend more time on the floor and less on the screen.</span></li>
-                    </ul>
+
+                <!-- GM Card -->
+                <div class="stack-card bg-white rounded-[3rem] border-[6px] border-slate-200 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col group">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="zap" class="w-48 h-48 text-brand-orange"></i>
+                    </div>
+
+                    <div class="bg-slate-900 text-white py-2 text-center text-[10px] font-black uppercase tracking-[0.4em] relative z-10">
+                        Store Support
+                    </div>
+
+                    <div class="p-10 text-center flex flex-col items-center relative z-10">
+                        <div class="w-24 h-24 bg-slate-50 border-2 border-slate-200 rounded-full flex items-center justify-center mb-8 shadow-inner">
+                            <i data-lucide="users" class="w-10 h-10 text-slate-900"></i>
+                        </div>
+
+                        <h4 class="text-brand-brown font-black text-xs uppercase tracking-[0.3em] mb-3">General Managers</h4>
+                        <h3 class="text-slate-900 text-4xl font-black uppercase tracking-tight mb-4">Your Automated Rep</h3>
+                        <div class="bg-brand-orange/10 border border-brand-orange/20 px-6 py-2 rounded-full mb-10">
+                            <p class="text-brand-orange font-black text-lg uppercase tracking-tight">Focus on Guests. We'll Fill the Seats.</p>
+                        </div>
+                        
+                        <div class="w-full space-y-5">
+                            <div class="flex items-center gap-5 bg-slate-50 border border-slate-200 p-6 rounded-3xl text-left hover:bg-slate-100 transition-colors">
+                                <div class="bg-brand-orange rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(255,90,0,0.3)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-white stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-900 text-xl font-black leading-none mb-1">Digital Assistant</p>
+                                    <p class="text-slate-500 text-sm font-medium">A rep that handles the marketing work for you</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 bg-slate-50 border border-slate-200 p-6 rounded-3xl text-left hover:bg-slate-100 transition-colors">
+                                <div class="bg-brand-orange rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(255,90,0,0.3)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-white stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-900 text-xl font-black leading-none mb-1">Shift Filler</p>
+                                    <p class="text-slate-500 text-sm font-medium">Turns slow shifts into busy ones automatically</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 bg-slate-50 border border-slate-200 p-6 rounded-3xl text-left hover:bg-slate-100 transition-colors">
+                                <div class="bg-brand-orange rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(255,90,0,0.3)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-white stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-900 text-xl font-black leading-none mb-1">Zero Friction</p>
+                                    <p class="text-slate-500 text-sm font-medium">No new routine to learn. It works around you.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 bg-slate-50 border border-slate-200 p-6 rounded-3xl text-left hover:bg-slate-100 transition-colors">
+                                <div class="bg-brand-orange rounded-full p-2 flex-shrink-0 shadow-[0_0_20px_rgba(255,90,0,0.3)]">
+                                    <i data-lucide="check" class="w-5 h-5 text-white stroke-[4px]"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-900 text-xl font-black leading-none mb-1">Floor Focus</p>
+                                    <p class="text-slate-500 text-sm font-medium">Stay with guests while the system fills seats</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-auto bg-slate-50 p-8 text-center border-t border-slate-200">
+                        <span class="text-slate-400 text-[11px] font-black uppercase tracking-[0.3em]">Store Level Marketing Support</span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- SECTION 01: THE PROBLEM -->
-    <section id="problem" class="py-16 bg-slate-50 border-y border-slate-200">
+    <section id="problem" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
                     <span class="text-brand-brown">01</span> / The Execution Gap
                 </div>
@@ -167,9 +287,9 @@
 
             <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden">
                 <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-                    <div class="p-10 bg-slate-50">
+                    <div class="p-10 bg-slate-50 flex flex-col items-center text-center">
                         <h4 class="text-3xl font-black text-red-500 uppercase tracking-tighter italic mb-8">The Old Way</h4>
-                        <ul class="space-y-6">
+                        <ul class="space-y-6 text-left">
                             <li class="flex items-start gap-4">
                                 <div class="bg-red-100 p-2 rounded-lg mt-1"><i data-lucide="alert-circle" class="w-6 h-6 text-red-600"></i></div>
                                 <span class="text-lg md:text-xl text-slate-600 leading-tight font-medium">Managers are too busy putting out daily fires.</span>
@@ -188,9 +308,9 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="p-10 bg-emerald-50/30">
+                    <div class="p-10 bg-emerald-50/30 flex flex-col items-center text-center">
                         <h4 class="text-3xl font-black text-emerald-600 uppercase tracking-tighter italic mb-8">With StoreOS</h4>
-                        <ul class="space-y-6">
+                        <ul class="space-y-6 text-left">
                             <li class="flex items-start gap-4">
                                 <div class="bg-emerald-100 p-2 rounded-lg mt-1 shadow-sm"><i data-lucide="zap" class="w-6 h-6 text-emerald-600"></i></div>
                                 <span class="text-lg md:text-xl text-slate-900 font-bold leading-tight">Automated prompts tell managers exactly what to do.</span>
@@ -214,14 +334,14 @@
         </div>
     </section>
 
-    <!-- SECTION 02: THE SOLUTION -->
-    <section id="system" class="py-16 relative bg-white">
+    <!-- SECTION 02: WHAT IT DOES -->
+    <section id="system" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-widest mb-4">
                     <span class="text-brand-brown">02</span> / How It Works
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight uppercase">4 Helpers that Drive Execution</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight uppercase">What This Actually Does Every Day</h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">This system provides the automation needed to turn your data into action without adding more work for your staff.</p>
             </div>
 
@@ -231,7 +351,7 @@
                         <i data-lucide="radar" class="w-7 h-7 text-brand-blue"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">1. Market Intel</h3>
-                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">Checks your store data and outside info like local sports and weather to spot slow hours.</p>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">Scans internal store data and external sources like GMB and Yelp. It identifies exactly what makes guests visit.</p>
                 </div>
                 <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all group flex flex-col items-center text-center">
                     <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
@@ -252,7 +372,7 @@
                         <i data-lucide="bar-chart-3" class="w-7 h-7 text-emerald-600"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">4. Result Tracking</h3>
-                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">Tracks every visit from the promotions to prove down to the dollar how much extra money was made.</p>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">Tracks exactly why guests came in, proving down to the dollar how much extra revenue was generated.</p>
                 </div>
             </div>
         </div>
@@ -262,54 +382,58 @@
     <section id="opportunities" class="py-12 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-200/50 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
                     <span class="text-brand-brown">03</span> / The Math
                 </div>
                 <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">How we hit $1.5M in extra sales</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-4 italic">"This is not a campaign. This is a system applied across dayparts, segments, and local events."</p>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-4 italic text-center">"This is not a campaign. This is a system applied across dayparts, segments, and local events."</p>
             </div>
 
             <div class="grid lg:grid-cols-12 gap-8 mb-16 items-center">
                 <div class="lg:col-span-7 space-y-6">
                     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-6">
-                        <div class="flex-1">
+                        <div class="flex-1 text-center sm:text-left">
                             <span class="bg-orange-100 text-brand-orange text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-2 inline-block">Fixing Slow Hours</span>
-                            <h4 class="text-lg font-bold text-slate-900">Thursday Power Hour (4 6pm)</h4>
-                            <p class="text-sm text-slate-600 mt-1">Filling empty hours by inviting office workers in right when they finish work.</p>
+                            <h4 class="text-lg font-bold text-slate-900 text-center sm:text-left">Thursday Power Hour (4 6pm)</h4>
+                            <p class="text-sm text-slate-600 mt-1">Leveraging drivers like "End of Workday" to fill bar stools.</p>
                         </div>
-                        <div class="text-right border-l pl-6 border-slate-100">
+                        <div class="text-right border-l pl-6 border-slate-100 hidden sm:block">
                             <p class="text-xs text-brand-orange font-bold mb-1 uppercase">EXTRA SALES</p>
                             <p class="text-2xl font-black text-slate-900">+$208K/yr</p>
                         </div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-6">
-                        <div class="flex-1">
+                        <div class="flex-1 text-center sm:text-left">
                             <span class="bg-purple-100 text-purple-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-2 inline-block">Winning Back Guests</span>
                             <h4 class="text-lg font-bold text-slate-900">VIP Loyalty Reminders</h4>
-                            <p class="text-sm text-slate-600 mt-1">Automated messages sent to top guests who haven't visited in 3 months.</p>
+                            <p class="text-sm text-slate-600 mt-1">Automated messages sent to guests who haven't visited in 3 months.</p>
                         </div>
-                        <div class="text-right border-l pl-6 border-slate-100">
+                        <div class="text-right border-l pl-6 border-slate-100 hidden sm:block">
                             <p class="text-xs text-brand-orange font-bold mb-1 uppercase">EXTRA SALES</p>
                             <p class="text-2xl font-black text-slate-900">+$280K/yr</p>
                         </div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-6">
-                        <div class="flex-1">
+                        <div class="flex-1 text-center sm:text-left">
                             <span class="bg-blue-100 text-brand-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-2 inline-block">Local Community</span>
-                            <h4 class="text-lg font-bold text-slate-900">Local SEO & Event Distribution</h4>
-                            <p class="text-sm text-slate-600 mt-1">Making sure Capitol Heights neighbors see your events when they search online.</p>
+                            <h4 class="text-lg font-bold text-slate-900 text-center sm:text-left">Local SEO & Event Distribution</h4>
+                            <p class="text-sm text-slate-600 mt-1">Targeting community events that drive large local crowds.</p>
                         </div>
-                        <div class="text-right border-l pl-6 border-slate-100">
+                        <div class="text-right border-l pl-6 border-slate-100 hidden sm:block">
                             <p class="text-xs text-brand-orange font-bold mb-1 uppercase">EXTRA SALES</p>
                             <p class="text-2xl font-black text-slate-900">+$450K/yr</p>
                         </div>
                     </div>
                 </div>
 
+                <!-- HIGH-IMPACT "CLICK FUNNEL" REVENUE CARD -->
                 <div class="lg:col-span-5 relative group">
-                    <div class="absolute inset-0 bg-brand-brown/40 blur-[80px] rounded-3xl opacity-40"></div>
-                    <div class="revenue-card-mesh relative rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6)] border border-white/20 overflow-hidden flex flex-col z-10 transform lg:scale-105">
+                    <div class="absolute inset-0 bg-brand-orange/40 blur-[80px] rounded-3xl opacity-40 animate-pulse"></div>
+                    
+                    <div class="revenue-card-mesh relative rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.6)] border border-white/20 overflow-hidden flex flex-col z-10 transform lg:scale-105 transition-transform duration-500 hover:scale-[1.07]">
+                        
+                        <!-- Header Section -->
                         <div class="px-8 py-8 border-b border-white/10 bg-white/5 backdrop-blur-md">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="bg-emerald-50 text-brand-brown text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Validated Data Layer</div>
@@ -317,14 +441,18 @@
                             </div>
                             <h3 class="text-white text-3xl font-black tracking-tight leading-tight">Total <span class="text-emerald-400">$1.5M</span> Extra Sales:</h3>
                         </div>
+
+                        <!-- Impact List Body -->
                         <div class="p-8 space-y-5 bg-black/20">
+                            <!-- Line Item 1 -->
                             <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 hover:bg-emerald-500/10 transition-all">
                                 <div class="flex items-center gap-4">
                                     <div class="bg-emerald-500 rounded-full p-1.5"><i data-lucide="check" class="w-4 h-4 text-brand-brown stroke-[4px]"></i></div>
-                                    <span class="text-slate-100 text-lg font-bold">Fixing Slow Hours</span>
+                                    <span class="text-slate-100 text-lg font-bold">Standardized Daily Execution</span>
                                 </div>
                                 <span class="text-emerald-400 font-black text-2xl font-mono">$350k</span>
                             </div>
+                            <!-- Line Item 2 -->
                             <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 hover:bg-emerald-500/10 transition-all">
                                 <div class="flex items-center gap-4">
                                     <div class="bg-emerald-500 rounded-full p-1.5"><i data-lucide="check" class="w-4 h-4 text-brand-brown stroke-[4px]"></i></div>
@@ -332,6 +460,7 @@
                                 </div>
                                 <span class="text-emerald-400 font-black text-2xl font-mono">$280k</span>
                             </div>
+                            <!-- Line Item 3 -->
                             <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-2xl px-6 py-5 hover:bg-emerald-500/10 transition-all">
                                 <div class="flex items-center gap-4">
                                     <div class="bg-emerald-500 rounded-full p-1.5"><i data-lucide="check" class="w-4 h-4 text-brand-brown stroke-[4px]"></i></div>
@@ -371,10 +500,10 @@
         </div>
     </section>
 
-    <!-- SECTION 04: OBJECTION HANDLING -->
+    <!-- SECTION 04: QUESTIONS -->
     <section id="objections" class="py-12 bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-widest mb-4">
                     <span class="text-brand-brown">04</span> / Common Questions
                 </div>
@@ -386,7 +515,7 @@
                     <div class="bg-blue-100 p-3 rounded-full mb-4"><i data-lucide="database-zap" class="w-8 h-8 text-brand-blue"></i></div>
                     <h4 class="text-2xl font-black text-slate-900 mb-4 uppercase">NO RISK TO REGISTERS</h4>
                     <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl w-full">
-                        <p class="text-emerald-900 font-bold">The system only <span class="underline">reads</span> your data. It never changes or messes with your cash registers. There is zero risk to store service.</p>
+                        <p class="text-emerald-900 font-bold">The system only <span class="underline">read</span> your data. It never changes or messes with your cash registers. There is zero risk to store service.</p>
                     </div>
                 </div>
                 <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col items-center text-center shadow-sm">
@@ -407,7 +536,7 @@
                     <div class="bg-emerald-100 p-3 rounded-full mb-4"><i data-lucide="lock" class="w-8 h-8 text-emerald-600"></i></div>
                     <h4 class="text-2xl font-black text-slate-900 mb-4 uppercase">SAFE GUEST DATA</h4>
                     <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl w-full">
-                        <p class="text-emerald-900 font-bold">All guest info is protected with bank-level security. We keep your data private and scrambled so it stays safe.</p>
+                        <p class="text-emerald-900 font-bold">All guest info is protected with bank level security. We keep your data private and scrambled so it stays safe.</p>
                     </div>
                 </div>
             </div>
@@ -416,7 +545,7 @@
 
     <!-- SECTION 05: TIMELINE -->
     <section id="timeline" class="py-12 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
                 <span class="text-brand-brown">05</span> / The Plan
             </div>
@@ -440,16 +569,16 @@
                 <div class="p-6 bg-brand-brown rounded-2xl text-left text-white shadow-xl">
                     <h4 class="font-bold mb-2">Month 3</h4>
                     <p class="text-xs text-brand-orange uppercase font-black mb-3">Review</p>
-                    <p class="text-sm text-slate-300">Final review of extra sales made. We only expand if the numbers hit our targets.</p>
+                    <p class="text-sm text-slate-300">Final review of extra sales. We only expand if the numbers hit our targets.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 06: INVESTMENT STRUCTURE -->
+    <!-- SECTION 06: INVESTMENT -->
     <section id="pricing" class="py-12 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
                     <span class="text-brand-brown">06</span> / The Investment
                 </div>
@@ -462,15 +591,15 @@
                         <h3 class="text-3xl font-extrabold text-white mb-4 uppercase tracking-tighter">Authorize the Model Store</h3>
                         <p class="text-slate-300 text-lg mb-6">We remove the risk by only getting paid from the extra revenue this system actually generates for your store.</p>
                         <ul class="space-y-4 mb-8">
-                            <li class="flex items-center gap-3 text-emerald-400 font-bold"><i data-lucide="check" class="w-5 h-5"></i> We set a baseline using your last year of sales.</li>
-                            <li class="flex items-center gap-3 text-emerald-400 font-bold"><i data-lucide="check" class="w-5 h-5"></i> We only track extra sales that happen because of the system.</li>
-                            <li class="flex items-center gap-3 text-emerald-400 font-bold"><i data-lucide="check" class="w-5 h-5"></i> You pay nothing if extra revenue targets aren't hit.</li>
+                            <li class="flex items-center gap-3 text-emerald-400 font-bold"><i data-lucide="check" class="w-5 h-5"></i> We set a baseline using your last year of sales</li>
+                            <li class="flex items-center gap-3 text-emerald-400 font-bold"><i data-lucide="check" class="w-5 h-5"></i> We only track extra sales that happen because of the system</li>
+                            <li class="flex items-center gap-3 text-emerald-400 font-bold"><i data-lucide="check" class="w-5 h-5"></i> You pay nothing if extra revenue targets aren't hit</li>
                         </ul>
-                        <p class="text-emerald-400 font-bold text-sm italic mb-8">If the extra sales aren't proven, we don't expand to more stores.</p>
+                        <p class="text-emerald-400 font-bold text-sm italic mb-8">If the extra sales aren't proven we don't expand to more stores.</p>
                         <button class="w-full sm:w-auto bg-emerald-500 text-brand-brown px-8 py-4 rounded-xl font-black text-xl uppercase shadow-lg hover:scale-105 transition-transform">Authorize the Model Store</button>
                     </div>
                     <div class="hidden lg:flex justify-end">
-                        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl w-full max-w-sm backdrop-blur-sm">
+                        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl w-full max-w-sm backdrop-blur-sm text-center flex flex-col items-center">
                             <h4 class="text-brand-orange font-bold mb-4 uppercase text-xs tracking-widest">Expansion Protocol</h4>
                             <div class="space-y-4 text-white">
                                 <p class="text-sm">Regional rollout only happens if the Capitol Heights pilot makes more money than it costs. You have the final say.</p>
@@ -489,8 +618,8 @@
         <div class="absolute inset-0 bg-brand-brown/5"></div>
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 uppercase tracking-tighter">Lock in the Regional Model Store</h2>
-            <p class="text-xl text-slate-600 mb-10 leading-relaxed">Add the execution layer to Capitol Heights to standardize your promotions and see exactly what makes money at each store.</p>
-            <button class="bg-brand-orange text-white px-10 py-5 rounded-xl font-black text-2xl uppercase tracking-tight shadow-2xl shadow-brand-orange/40 hover:scale-105 transition-transform">
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed text-center mx-auto">Add the execution layer to Capitol Heights to standardize your promotions and see exactly what makes money at each store.</p>
+            <button class="bg-brand-orange text-white px-10 py-5 rounded-xl font-black text-2xl uppercase tracking-tight shadow-2xl shadow-brand-orange/40 hover:scale-105 transition-transform mx-auto">
                 Authorize the Model Store
             </button>
         </div>

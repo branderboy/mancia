@@ -68,7 +68,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-24 lg:pt-32 lg:pb-32 overflow-hidden relative bg-white">
+    <section class="pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden relative bg-white">
         <!-- Subtle background pattern for light theme -->
         <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50 -z-10"></div>
         
@@ -76,7 +76,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Hero Text -->
                 <div class="text-left order-2 lg:order-1">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-sm font-medium mb-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-sm font-medium mb-6">
                         <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-orange"></span>
@@ -88,11 +88,11 @@
                         <span class="block text-2xl md:text-3xl lg:text-4xl gradient-text">It’s just not showing up when you need it.</span>
                     </h1>
                     
-                    <div class="border-l-4 border-brand-orange pl-5 py-2 mb-8 bg-orange-50/50 rounded-r-xl">
+                    <div class="border-l-4 border-brand-orange pl-5 py-2 mb-6 bg-orange-50/50 rounded-r-xl">
                         <p class="text-lg font-bold text-slate-800 italic">"Empty arcades don't mean people don't want to play. It means you didn't invite them at the right time."</p>
                     </div>
 
-                    <p class="text-xl text-slate-600 mb-12 max-w-2xl leading-relaxed">
+                    <p class="text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
                         <strong class="text-slate-900">StoreOS</strong> works like an automated <strong class="text-brand-orange">in-store marketing and sales team</strong>. It takes the customer data sitting in your system and turns it into daily, local promotions that get people in the door. Our goal is to help your store safely add <strong class="text-slate-900">$1.5M in extra revenue</strong> this year—no guesswork, just proven results.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-start gap-4">
@@ -140,9 +140,12 @@
     </section>
 
     <!-- WHAT'S BROKEN TODAY (The Real Problem) -->
-    <section id="problem" class="py-24 bg-slate-50 border-y border-slate-200">
+    <section id="problem" class="py-16 bg-slate-50 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">01</span> / The Problem
+                </div>
                 <h2 class="text-sm font-bold text-red-500 uppercase tracking-wider mb-2">Why Things Fall Through The Cracks</h2>
                 <h3 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Why hasn't your current setup fixed this?</h3>
                 <p class="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
@@ -150,72 +153,80 @@
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-12 mb-16 items-center">
-                <div class="space-y-6">
-                    <div class="border-l-4 border-slate-900 pl-5 py-2 mb-6">
-                        <p class="text-lg font-bold text-slate-800 italic">"Data sitting on a screen is useless. Data that sends a timely text message makes money."</p>
-                    </div>
-                    <p class="text-slate-600">Store managers are too busy running the floor to be local marketers. Instead of looking back at reports at the end of the month to figure out why Tuesday was slow, they need a system that acts in real-time to pack the house.</p>
-                    <p class="text-slate-600 font-medium"><strong class="text-slate-900">StoreOS</strong> is that missing tool—an AI-driven marketing rep that does the heavy lifting for your managers.</p>
-                </div>
-
-                <!-- Before vs After Visual -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
-                    <div class="grid grid-cols-2 divide-x divide-slate-200">
+            <div class="grid lg:grid-cols-1 gap-12 mb-10 items-center">
+                <!-- Large Before vs After Visual -->
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden">
+                    <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200">
                         <!-- Before -->
-                        <div class="p-6 bg-slate-50">
-                            <h4 class="font-bold text-red-500 mb-6 flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5"></i> The Old Way</h4>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-sm text-slate-600">
-                                    <i data-lucide="alert-circle" class="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5"></i>
-                                    <span>Managers are too busy putting out daily fires.</span>
+                        <div class="p-10 bg-slate-50">
+                            <div class="flex items-center gap-4 mb-2">
+                                <h4 class="text-3xl md:text-4xl font-black text-red-500 uppercase tracking-tighter italic">The Old Way</h4>
+                            </div>
+                            <p class="text-slate-500 font-bold text-sm uppercase tracking-widest mb-8 border-b border-slate-200 pb-4">The Operational Burden</p>
+                            <ul class="space-y-6">
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-red-100 p-2 rounded-lg mt-1"><i data-lucide="alert-circle" class="w-6 h-6 text-red-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-600 leading-tight">Managers are too busy putting out daily fires.</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-sm text-slate-600">
-                                    <i data-lucide="alert-circle" class="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5"></i>
-                                    <span>Slow afternoons are just accepted as "bad days."</span>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-red-100 p-2 rounded-lg mt-1"><i data-lucide="clock-4" class="w-6 h-6 text-red-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-600 leading-tight">Slow afternoons are just accepted as "bad days."</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-sm text-slate-600">
-                                    <i data-lucide="alert-circle" class="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5"></i>
-                                    <span>Promotions are generic and sent to everyone.</span>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-red-100 p-2 rounded-lg mt-1"><i data-lucide="megaphone-off" class="w-6 h-6 text-red-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-600 leading-tight">Promotions are generic and sent to everyone.</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-sm text-slate-600">
-                                    <i data-lucide="alert-circle" class="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5"></i>
-                                    <span>Data is only used to review what already happened.</span>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-red-100 p-2 rounded-lg mt-1"><i data-lucide="database-zap" class="w-6 h-6 text-red-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-600 leading-tight">Data is only used to review what already happened.</span>
                                 </li>
                             </ul>
                         </div>
                         <!-- After -->
-                        <div class="p-6 bg-emerald-50/30">
-                            <h4 class="font-bold text-emerald-600 mb-6 flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5"></i> With StoreOS</h4>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3 text-sm text-slate-900 font-medium">
-                                    <i data-lucide="zap" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
-                                    <span>Automated reminders tell managers exactly what to do.</span>
+                        <div class="p-10 bg-emerald-50/30">
+                            <div class="flex items-center gap-4 mb-2">
+                                <h4 class="text-3xl md:text-4xl font-black text-emerald-600 uppercase tracking-tighter italic">With StoreOS</h4>
+                            </div>
+                            <p class="text-emerald-700/60 font-bold text-sm uppercase tracking-widest mb-8 border-b border-emerald-100 pb-4">The Execution Advantage</p>
+                            <ul class="space-y-6">
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-emerald-100 p-2 rounded-lg mt-1 shadow-sm"><i data-lucide="zap" class="w-6 h-6 text-emerald-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-900 font-bold leading-tight">Automated reminders tell managers exactly what to do.</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-sm text-slate-900 font-medium">
-                                    <i data-lucide="zap" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
-                                    <span>Targeted messages turn slow hours into busy hours.</span>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-emerald-100 p-2 rounded-lg mt-1 shadow-sm"><i data-lucide="target" class="w-6 h-6 text-emerald-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-900 font-bold leading-tight">Targeted messages turn slow hours into busy hours.</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-sm text-slate-900 font-medium">
-                                    <i data-lucide="zap" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
-                                    <span>Events are built specifically for your local community.</span>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-emerald-100 p-2 rounded-lg mt-1 shadow-sm"><i data-lucide="users" class="w-6 h-6 text-emerald-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-900 font-bold leading-tight">Events are built specifically for your local community.</span>
                                 </li>
-                                <li class="flex items-start gap-3 text-sm text-slate-900 font-medium">
-                                    <i data-lucide="zap" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
-                                    <span>Data is used right away to drive same-day sales.</span>
+                                <li class="flex items-start gap-4">
+                                    <div class="bg-emerald-100 p-2 rounded-lg mt-1 shadow-sm"><i data-lucide="trending-up" class="w-6 h-6 text-emerald-600 flex-shrink-0"></i></div>
+                                    <span class="text-lg md:text-xl text-slate-900 font-bold leading-tight">Data is used right away to drive same-day sales.</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                </div>
+
+                <div class="space-y-6 text-center max-w-4xl mx-auto mt-10">
+                    <div class="border-l-4 border-slate-900 pl-5 py-2 inline-block text-left">
+                        <p class="text-xl font-bold text-slate-800 italic">"Data sitting on a screen is useless. Data that sends a timely text message makes money."</p>
+                    </div>
+                    <p class="text-lg text-slate-600">Store managers are too busy running the floor to be local marketers. Instead of looking back at reports to figure out why Tuesday was slow, they need a system that acts in real-time to pack the house. <strong class="text-slate-900">StoreOS</strong> is that missing tool—an AI-driven marketing rep that does the heavy lifting for your managers.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works: The 4-Agent System -->
-    <section id="system" class="py-24 relative bg-white">
+    <section id="system" class="py-16 relative bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">02</span> / The Solution
+                </div>
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How It Works: 4 Automated Helpers</h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">This isn't meant to replace your staff. Our software handles the data, writes the messages, and sends out the offers so your team can focus on serving the guests.</p>
             </div>
@@ -226,38 +237,41 @@
                         <i data-lucide="radar" class="w-7 h-7 text-brand-blue"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">1. The Data Watcher</h3>
-                    <p class="text-sm text-slate-600 mb-4 line-clamp-3">Every morning, it checks your sales, your customer list, and even local sports schedules to spot slow days and big opportunities.</p>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">Every morning, it scans both <strong>internal data</strong> (your POS and customer lists) and <strong>external data</strong> (competitor pricing, weather, and local sports) to spot slow days and big opportunities.</p>
                 </div>
                 <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
                     <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <i data-lucide="sparkles" class="w-7 h-7 text-purple-600"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">2. The Offer Creator</h3>
-                    <p class="text-sm text-slate-600 mb-4 line-clamp-3">It takes those opportunities and writes customized emails, text messages, and special offers tailored just for your local crowd.</p>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">It takes those opportunities and writes customized emails, text messages, and special offers tailored just for your local crowd to beat out nearby competitors.</p>
                 </div>
                 <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
                     <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <i data-lucide="zap" class="w-7 h-7 text-brand-orange"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">3. The Action Taker</h3>
-                    <p class="text-sm text-slate-600 mb-4 line-clamp-3">Once your manager clicks 'approve', this helper sends out the texts, posts the events online, and runs your local ads automatically.</p>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-5">Once approved, it distributes content everywhere. It updates your website for <strong>Capitol Heights local SEO</strong>, runs ads, and pushes messaging to maximize community impressions and visibility.</p>
                 </div>
                 <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all group">
                     <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <i data-lucide="bar-chart-3" class="w-7 h-7 text-emerald-600"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">4. The Results Tracker</h3>
-                    <p class="text-sm text-slate-600 mb-4 line-clamp-3">It tracks exactly how many people came in because of the messages, proving down to the dollar how much extra money was made.</p>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-4">It tracks exactly how many people came in because of the messages, proving down to the dollar how much extra money was made.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- THE MATH (Operational Proof) -->
-    <section id="opportunities" class="py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
+    <section id="opportunities" class="py-16 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-slate-200/50 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">03</span> / The Math
+                </div>
                 <h2 class="text-sm font-bold text-brand-orange uppercase tracking-wider mb-2">The Proof</h2>
                 <h3 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">How we hit $1.5M in extra sales.</h3>
                 <p class="text-lg text-slate-600 max-w-3xl mx-auto">This isn't magic. It's just doing the basic marketing tasks consistently every day across your empty hours, forgotten customers, and big seasonal events.</p>
@@ -315,8 +329,8 @@
                     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center gap-6">
                         <div class="flex-1 text-center sm:text-left">
                             <span class="bg-blue-100 text-brand-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-2 inline-block">Goal 3: Local Event Boosts</span>
-                            <h4 class="text-lg font-bold text-slate-900">Sports & Family Days</h4>
-                            <p class="text-sm text-slate-600 mt-1">Instead of generic ads, we push local events like "Ravens Watch Parties" or "PG County School Break Bundles" to people who live nearby.</p>
+                            <h4 class="text-lg font-bold text-slate-900">SEO & Content Distribution</h4>
+                            <p class="text-sm text-slate-600 mt-1">We distribute localized content and optimize your website for local SEO, increasing impressions so the Capitol Heights community sees your events first.</p>
                         </div>
                         <div class="flex items-center gap-4 text-center border-t sm:border-t-0 sm:border-l border-slate-200 pt-4 sm:pt-0 sm:pl-6 w-full sm:w-auto">
                             <div>
@@ -348,7 +362,7 @@
                             <span class="font-bold text-white">$280,000</span>
                         </li>
                         <li class="flex justify-between items-center text-sm">
-                            <span class="text-slate-300">Promoting Local Events</span>
+                            <span class="text-slate-300">Local SEO & Content Visibility</span>
                             <span class="font-bold text-white">$450,000</span>
                         </li>
                         <li class="flex justify-between items-center text-sm">
@@ -374,7 +388,7 @@
             </div>
 
             <!-- CORE IDEA / WHY NOW STRATEGY BLOCK -->
-            <div class="mt-8 bg-white border-2 border-brand-orange/20 rounded-3xl p-8 md:p-12 shadow-xl text-center relative overflow-hidden">
+            <div class="mt-8 bg-white border-2 border-brand-orange/20 rounded-3xl p-8 md:p-10 shadow-xl text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-orange/5 to-transparent"></div>
                 <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 relative z-10">Nothing in this system is new.<br>It's just finally happening on time.</h3>
                 <p class="text-slate-600 text-lg max-w-3xl mx-auto relative z-10 font-medium leading-relaxed">
@@ -385,9 +399,12 @@
     </section>
 
     <!-- OBJECTION HANDLING (IT & Operations) -->
-    <section id="objections" class="py-24 bg-white border-t border-slate-200">
+    <section id="objections" class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">04</span> / Operations & IT
+                </div>
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">What Would Stop This From Working?</h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">We know what usually goes wrong with new software. This system is designed to avoid those headaches from day one.</p>
             </div>
@@ -438,9 +455,12 @@
     </section>
 
     <!-- PILOT EXECUTION TIMELINE -->
-    <section id="timeline" class="py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
+    <section id="timeline" class="py-16 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">05</span> / Validation Plan
+                </div>
                 <h2 class="text-sm font-bold text-brand-orange uppercase tracking-wider mb-2">What Happens After You Say Yes</h2>
                 <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">The 90-Day Plan</h3>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">We don't just guess. This is a step-by-step test to safely prove this makes you money.</p>
@@ -498,12 +518,15 @@
     </section>
 
     <!-- ENTERPRISE SCALE ROADMAP -->
-    <section class="py-24 bg-brand-dark text-white relative overflow-hidden border-t border-slate-800">
+    <section class="py-16 bg-brand-dark text-white relative overflow-hidden border-t border-slate-800">
         <div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
             <i data-lucide="layers" class="w-64 h-64 text-white"></i>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">06</span> / Enterprise Roadmap
+                </div>
                 <h2 class="text-sm font-bold text-brand-orange uppercase tracking-wider mb-2">The Big Picture</h2>
                 <h3 class="text-3xl md:text-5xl font-extrabold mb-6">The Plan for All 241+ Stores</h3>
                 
@@ -535,9 +558,12 @@
     </section>
 
     <!-- Pricing / Tiers & RISK REVERSAL -->
-    <section id="pricing" class="py-24 bg-slate-50 border-t border-slate-200">
+    <section id="pricing" class="py-16 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="text-brand-orange">07</span> / Pricing & Next Steps
+                </div>
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple Pricing Options</h2>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto">We offer standard flat pricing, but we prefer to partner with you: we only get paid based on the extra money we make for your store.</p>
             </div>
@@ -605,7 +631,7 @@
     </section>
 
     <!-- Footer CTA with URGENCY -->
-    <section class="py-24 relative overflow-hidden bg-white border-t border-slate-200">
+    <section class="py-16 relative overflow-hidden bg-white border-t border-slate-200">
         <div class="absolute inset-0 bg-brand-orange/5"></div>
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 border border-red-200 text-red-600 text-sm font-bold mb-8 shadow-sm">
